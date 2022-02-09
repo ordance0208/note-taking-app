@@ -1,0 +1,7 @@
+.note-editor-container {
+  height: 100%;
+  flex: 2;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+}

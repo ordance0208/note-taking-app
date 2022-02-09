@@ -1,0 +1,21 @@
+.editor-tools {
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.7rem;
+}
+
+.editor-tools .icon-holder:first-child {
+  margin-left: 1rem;
+}
+
+.editor-tools .icon-holder {
+  margin-right: 2rem;
+}
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  align-self: center;
+  width: 100%;
+  border: 1px solid gray;
+}
+
+.search-box .search-field {
+  width: 90%;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+}
+
+.search-box .icon {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.search-box .clear-search-field {
+  margin-left: 0.5rem;
+  opacity: 0;
+}
+
+.search-box .clear-search-field.active {
+  opacity: 1;
+  cursor: pointer;
+}

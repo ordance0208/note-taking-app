@@ -1,0 +1,36 @@
+.text-editor {
+  align-self: center;
+  justify-self:flex-start; 
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-editor > div[contenteditable='true'] {
+  height: 90%;
+  width: 90%;
+  max-width: 90%;
+  outline: none;
+  font-size: 1.2rem;
+  justify-self: center;
+  align-self: center;
+  margin-top: 1rem;
+  word-break: break-all;
+  overflow-y: scroll;
+}
+
+ul[data-type='taskList'] {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+ul[data-type='taskList'] p {
+  margin-left: 0.5rem;
+}
+
+li {
+  display: flex;
+}

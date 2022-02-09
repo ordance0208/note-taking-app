@@ -1,0 +1,11 @@
+.note-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.note-list.active {
+  justify-content: flex-start;
+}

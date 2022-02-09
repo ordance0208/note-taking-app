@@ -1,0 +1,17 @@
+.tooltip {
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  background: gray;
+  padding: 0.35rem 0.9rem;
+  transform: translateX(-50%) scale(0.9);
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  color: #fafafa;
+  font-size: 1.15rem;
+  white-space: nowrap;
+  z-index: 123;
+  transition: all 400ms ease;
+  user-select: none;
+}

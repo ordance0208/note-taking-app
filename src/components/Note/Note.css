@@ -1,0 +1,13 @@
+.note {
+  border: 1px solid gray;
+  width: 90%;
+  padding: 1rem;
+}
+
+.note:hover {
+  cursor: pointer;
+}
+
+.note.selected {
+  background: darkblue;
+}

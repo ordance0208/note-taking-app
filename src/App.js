@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import NoteContainer from './components/containers/NoteContainer/NoteContainer';
 import './App.css';
+import NoteEditorContainer from './components/containers/NoteEditorContainer/NoteEditorContainer';
+import { createContext, useEffect, useReducer, useState } from 'react';
+import notesReducer from './reducers/notes';
+
+export const NotesContext = createContext();
 
 function App() {
+  const [notes, dispatchNotes] = useReducer(notesReducer, []);
+  const [selectedNoteId, setSelectedNoteId] = useState(null);
+  const [selectedNote, setSelectedNote] = useState(null);
+
+  useEffect(() => {
+    const note = notes.find(note => note.id === selectedNoteId);
+    setSelectedNote(note);  
+  }, [selectedNoteId]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NotesContext.Provider
+      value={{ notes, selectedNote, dispatchNotes, selectedNoteId, setSelectedNoteId }}
+    >
+      <div className="App">
+        <NoteContainer />
+        <NoteEditorContainer />
+      </div>
+    </NotesContext.Provider>
   );
 }
 
