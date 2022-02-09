@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faImage,
   faTasks,
@@ -8,9 +7,7 @@ import {
   faHeading,
   faLink
 } from '@fortawesome/free-solid-svg-icons';
-import Tooltip from '../Tooltip/Tooltip';
 import './EditorTools.css';
-import { act } from 'react-dom/cjs/react-dom-test-utils.production.min';
 import IconHolder from '../IconHolder/IconHolder';
 
 const EditorTools = ({ editor }) => {

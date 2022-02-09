@@ -5,7 +5,6 @@ import { useState } from 'react/cjs/react.development';
 
 const NoteEditorContainer = () => {
   const [editor, setEditor] = useState(null);
-  const [updateEditor, setUpdateEditor] = useState(null);
 
   return (
     <div className="note-editor-container">
