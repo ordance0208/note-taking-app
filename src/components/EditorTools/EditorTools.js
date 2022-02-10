@@ -4,8 +4,7 @@ import {
   faBold,
   faItalic,
   faUnderline,
-  faHeading,
-  faLink
+  faHeading
 } from '@fortawesome/free-solid-svg-icons';
 import './EditorTools.css';
 import IconHolder from '../IconHolder/IconHolder';
