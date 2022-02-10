@@ -24,8 +24,21 @@ const NoteEditor = ({ setEditor }) => {
   });
 
   const onUpdate = () => {
-    const editedNote = {...selectedNote, noteContent: editorJSON}
+    let displayTitle = '';
+
+    if(editorJSON) {
+      if(editorJSON.content.length !== 0) {
+        for(let i = 0; i < editorJSON.content.length; i++) {
+          if(editorJSON.content[i].content) {
+            displayTitle = editorJSON.content[i].content[0].text;
+            break;
+          }
+        }  
+      }
+    }
+    const editedNote = {...selectedNote, noteContent: editorJSON, displayTitle};
     editNote({ type: 'EDIT_NOTE', payload: editedNote });
+    console.log(editorJSON);
   }
 
   useEffect(() => {

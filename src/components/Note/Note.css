@@ -1,7 +1,14 @@
 .note {
   border: 1px solid gray;
   width: 90%;
-  padding: 1rem;
+  max-width: 400px;
+  padding: 1rem; 
+}
+
+.note h3 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .note:hover {

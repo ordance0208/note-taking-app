@@ -3,21 +3,18 @@ import { NotesContext } from '../../../App';
 import Note from '../../Note/Note';
 import './NotesList.css';
 
-const NotesList = () => {
-  const { notes, selectedNote } = useContext(NotesContext);
+const NotesList = ({ searchText }) => {
+  const { notes } = useContext(NotesContext);
 
-  const notesList = notes.map((note) => (
-    <Note
-      note={note}
-      key={note.id}
-    />
-  ));
+  const notesList = notes
+    .filter((note) => note.displayTitle.toLowerCase().includes(searchText.toLowerCase()))
+    .map((note) => <Note note={note} key={note.id} />);
 
   const calculateStyles = notes.length === 0 ? 'note-list' : 'note-list active';
 
   return (
     <div className={calculateStyles}>
-      {notes.length === 0 ? 'No notes to show' : notesList}
+      {notes.length === 0 ? <h3>No notes to show</h3> : notesList}
     </div>
   );
 };

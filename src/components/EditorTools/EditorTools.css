@@ -1,9 +1,9 @@
 .editor-tools {
-  border: 1px solid gray;
+  border-bottom: 1px solid gray;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.7rem;
+  padding: 0.65rem;
 }
 
 .editor-tools .icon-holder:first-child {

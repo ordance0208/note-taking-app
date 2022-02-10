@@ -1,7 +1,17 @@
 .notes-container {
   height: 100%;
   flex: 1;
-  border: 1px solid gray;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (max-width: 500px) {
+  .notes-container {
+    flex: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
 }

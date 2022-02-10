@@ -56,11 +56,6 @@ const EditorTools = ({ editor }) => {
           onClick={() => handleEditorCommand('tasklist')}
         />
         <IconHolder 
-          icon={faLink}
-          tooltip='Add Link'
-          onClick={() => console.log('link added')}
-        />
-        <IconHolder 
           icon={faImage}
           tooltip='Add Image'
           onClick={() => console.log('Image added')}

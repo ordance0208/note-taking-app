@@ -1,8 +1,8 @@
-import NoteContainer from './components/containers/NoteContainer/NoteContainer';
-import './App.css';
-import NoteEditorContainer from './components/containers/NoteEditorContainer/NoteEditorContainer';
 import { createContext, useEffect, useReducer, useState } from 'react';
+import NoteContainer from './components/containers/NoteContainer/NoteContainer';
+import NoteEditorContainer from './components/containers/NoteEditorContainer/NoteEditorContainer';
 import notesReducer from './reducers/notes';
+import './App.css';
 
 export const NotesContext = createContext();
 
@@ -12,13 +12,19 @@ function App() {
   const [selectedNote, setSelectedNote] = useState(null);
 
   useEffect(() => {
-    const note = notes.find(note => note.id === selectedNoteId);
-    setSelectedNote(note);  
+    const note = notes.find((note) => note.id === selectedNoteId);
+    setSelectedNote(note);
   }, [selectedNoteId]);
 
   return (
     <NotesContext.Provider
-      value={{ notes, selectedNote, dispatchNotes, selectedNoteId, setSelectedNoteId }}
+      value={{
+        notes,
+        selectedNote,
+        dispatchNotes,
+        selectedNoteId,
+        setSelectedNoteId,
+      }}
     >
       <div className="App">
         <NoteContainer />

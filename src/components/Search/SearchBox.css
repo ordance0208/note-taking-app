@@ -5,7 +5,7 @@
   padding: 1rem;
   align-self: center;
   width: 100%;
-  border: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .search-box .search-field {
