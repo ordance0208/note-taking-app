@@ -12,5 +12,11 @@
 }
 
 .container-header .icon-holder:first-child .tooltip {
-  margin-left: 1rem;
+  margin-left: 1.3rem;
+}
+
+@media screen and (max-width: 500px) {
+  .container-header .icon-holder:last-child .tooltip {
+    margin-left: -2.3rem;
+  } 
 }

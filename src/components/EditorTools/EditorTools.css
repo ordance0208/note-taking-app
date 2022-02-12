@@ -7,11 +7,26 @@
 }
 
 .editor-tools .icon-holder:first-child {
-  margin-left: 1rem;
+  margin: 0 1;
+  display: none;
 }
 
 .editor-tools .icon-holder {
-  margin-right: 2rem;
+  margin-right: 1.7rem;
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  .editor-tools .icon-holder:first-child {
+    display: block;
+  }
+
+  .editor-tools .icon-holder:nth-child(2) .tooltip {
+    margin-left: 1.3rem;
+  }
+
+  .editor-tools .icon-holder:first-child .tooltip {
+    margin-left: 4.3rem;
+  }
 }
 
 

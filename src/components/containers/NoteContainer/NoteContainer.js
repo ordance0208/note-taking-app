@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { NotesContext } from '../../../App';
 import SearchBox from '../../Search/SearchBox';
+import { ResponsiveContext } from '../AppContainer/AppContainer';
 import ContainerHeader from '../ContianerHeader/ContainerHeader';
 import NotesList from '../NotesList/NotesList';
 import './NoteContainer.css';

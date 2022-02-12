@@ -31,23 +31,33 @@ const NoteEditor = ({ setEditor }) => {
   const onUpdate = () => {
     let displayTitle = '';
 
-    if (editorJSON) {
-      if (editorJSON.content.length !== 0) {
-        for (let i = 0; i < editorJSON.content.length; i++) {
-          if (editorJSON.content[i].content) {
-            displayTitle = editorJSON.content[i].content[0].text;
-            break;
-          }
-        }
-      }
-    }
+    // if (editorJSON) {
+    //   if (editorJSON.content.length !== 0) {
+    //     for (let i = 0; i < editorJSON.content.length; i++) {
+    //       if (editorJSON.content[i].content) {
+            
+    //         if(editorJSON.content[i].content[0].type === 'taskItem') {
+
+    //           if(editorJSON.content[i].content[0].content[0].text !== undefined) {                
+    //             displayTitle = editorJSON.content[i].content[0].content[0].content[0].text;
+    //             break;
+    //           }
+    //         }
+
+    //         if(editorJSON.content[i].content[0].content[0].text.trim() !== '') {
+    //           displayTitle = editorJSON.content[i].content[0].text;
+    //           break;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
     const editedNote = {
       ...selectedNote,
       noteContent: editorJSON,
       displayTitle,
     };
     editNote({ type: 'EDIT_NOTE', payload: editedNote });
-    console.log(editorJSON);
   };
 
   useEffect(() => {

@@ -4,12 +4,18 @@ import {
   faBold,
   faItalic,
   faUnderline,
-  faHeading
+  faHeading,
+  faChevronLeft
 } from '@fortawesome/free-solid-svg-icons';
 import './EditorTools.css';
 import IconHolder from '../IconHolder/IconHolder';
+import { useContext } from 'react';
+import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
 
 const EditorTools = ({ editor }) => {
+
+  const toggleEditorView = useContext(ResponsiveContext);
+
 
   const handleEditorCommand = (action) => {    
     switch(action) {
@@ -23,12 +29,13 @@ const EditorTools = ({ editor }) => {
     editor.commands.focus();
   };
 
-  const addImage = () => {
-    editor.commands.setImage({ src: 'https://www.w3schools.com/images/w3schools_green.jpg' })
-  };
-
   return (
     <div className="editor-tools">
+        <IconHolder 
+          icon={faChevronLeft}
+          tooltip='Go To Notes List'
+          onClick={toggleEditorView}
+        />          
         <IconHolder
           icon={faHeading}
           tooltip='Toggle Heading'

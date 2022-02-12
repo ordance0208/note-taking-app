@@ -3,6 +3,7 @@ import NoteContainer from './components/containers/NoteContainer/NoteContainer';
 import NoteEditorContainer from './components/containers/NoteEditorContainer/NoteEditorContainer';
 import notesReducer from './reducers/notes';
 import './App.css';
+import AppContainer from './components/containers/AppContainer/AppContainer';
 
 export const NotesContext = createContext();
 
@@ -27,8 +28,7 @@ function App() {
       }}
     >
       <div className="App">
-        <NoteContainer />
-        <NoteEditorContainer />
+        <AppContainer />
       </div>
     </NotesContext.Provider>
   );
