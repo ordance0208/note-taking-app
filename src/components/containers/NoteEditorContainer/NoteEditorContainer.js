@@ -1,6 +1,4 @@
-import { useContext, useEffect } from 'react';
-import { useState } from 'react/cjs/react.development';
-import { NotesContext } from '../../../App';
+import { useState } from 'react';
 import EditorTools from '../../EditorTools/EditorTools';
 import NoteEditor from '../../NoteEditor/NoteEditor';
 import './NoteEditorContainer.css';

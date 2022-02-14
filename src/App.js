@@ -1,6 +1,4 @@
 import { createContext, useEffect, useReducer, useState } from 'react';
-import NoteContainer from './components/containers/NoteContainer/NoteContainer';
-import NoteEditorContainer from './components/containers/NoteEditorContainer/NoteEditorContainer';
 import notesReducer from './reducers/notes';
 import './App.css';
 import AppContainer from './components/containers/AppContainer/AppContainer';
