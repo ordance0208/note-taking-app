@@ -15,7 +15,7 @@
   margin-left: 1.3rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 768px) {
   .container-header .icon-holder:last-child .tooltip {
     margin-left: -2.3rem;
   } 
