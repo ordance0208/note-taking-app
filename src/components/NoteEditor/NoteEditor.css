@@ -21,6 +21,16 @@
   overflow-y: scroll;
 }
 
+.editor-inactive {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 ul[data-type='taskList'] {
   list-style: none;
   padding: 0;

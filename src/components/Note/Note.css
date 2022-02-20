@@ -2,12 +2,13 @@
   border-bottom: 1px solid gray;
   width: 100%;
   padding: 1rem; 
+  box-sizing: border-box;
 }
 
 .note h3 {
   overflow: hidden;
+  text-overflow:ellipsis;
   white-space: nowrap;
-  text-overflow: ellipsis;
 }
 
 .note:hover {

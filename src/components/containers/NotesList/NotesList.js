@@ -8,7 +8,9 @@ const NotesList = ({ searchText }) => {
 
   const notesList = notes
     // .filter((note) => note.displayTitle.toLowerCase().includes(searchText.toLowerCase()))
-    .map((note) => <Note note={note} key={note.id} />);
+    .map((note) => { 
+      return <Note note={note} key={note.id} />
+    });
 
   const calculateStyles = notes.length === 0 ? 'note-list' : 'note-list active';
 

@@ -31,27 +31,20 @@ const NoteEditor = ({ setEditor }) => {
   const onUpdate = () => {
     let displayTitle = '';
 
-    // if (editorJSON) {
-    //   if (editorJSON.content.length !== 0) {
-    //     for (let i = 0; i < editorJSON.content.length; i++) {
-    //       if (editorJSON.content[i].content) {
-            
-    //         if(editorJSON.content[i].content[0].type === 'taskItem') {
+    if (editorJSON) {
+      if (editorJSON.content.length !== 0) {
+        for (let i = 0; i < editorJSON.content.length; i++) {
+          if (editorJSON.content[i].content) {
+            if(editorJSON.content[i].content[0].text.trim() !== '') {
+              console.log(selectedNote.id);
+              displayTitle = editorJSON.content[i].content[0].text;
+              break;
+            }
+          }
+        }
+      }
+    }
 
-    //           if(editorJSON.content[i].content[0].content[0].text !== undefined) {                
-    //             displayTitle = editorJSON.content[i].content[0].content[0].content[0].text;
-    //             break;
-    //           }
-    //         }
-
-    //         if(editorJSON.content[i].content[0].content[0].text.trim() !== '') {
-    //           displayTitle = editorJSON.content[i].content[0].text;
-    //           break;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
     const editedNote = {
       ...selectedNote,
       noteContent: editorJSON,
@@ -82,7 +75,9 @@ const NoteEditor = ({ setEditor }) => {
   return selectedNote ? (
     <EditorContent editor={editor} className="text-editor" />
   ) : (
-    <p>No note selected</p>
+    <div className='editor-inactive'>
+      <h3>No note selected</h3>
+    </div>
   );
 };
 

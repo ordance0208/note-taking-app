@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { NotesContext } from '../../App';
 import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
 import './Note.css';
@@ -10,6 +10,7 @@ const Note = ({ note }) => {
   const handleClick = () => {
     setSelectedNoteId(note.id);
     toggleEditorView();
+    console.log(note.id);
   }
 
   const calculateStyles = selectedNoteId === note.id ? 'note selected' : 'note';
@@ -17,7 +18,7 @@ const Note = ({ note }) => {
   return (
     <div onClick={handleClick} 
       className={calculateStyles}>
-      <h3>Title: {note.displayTitle || 'New Note'}</h3>
+      <h3>{note.displayTitle || 'New Note'}</h3>
     </div>
   )
 };

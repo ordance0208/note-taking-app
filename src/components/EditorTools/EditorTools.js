@@ -5,16 +5,19 @@ import {
   faItalic,
   faUnderline,
   faHeading,
-  faChevronLeft
+  faChevronLeft,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 import './EditorTools.css';
 import IconHolder from '../IconHolder/IconHolder';
 import { useContext } from 'react';
 import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
+import { NotesContext } from '../../App';
 
 const EditorTools = ({ editor }) => {
 
   const toggleEditorView = useContext(ResponsiveContext);
+  const { selectedNoteId, dispatchNotes: removeNote } = useContext(NotesContext);
 
 
   const handleEditorCommand = (action) => {    
@@ -65,6 +68,13 @@ const EditorTools = ({ editor }) => {
           icon={faImage}
           tooltip='Add Image'
           onClick={() => console.log('Image added')}
+        />
+        <IconHolder 
+          icon={faTrashAlt}
+          tooltip='Delete Note'
+          onClick={() => {
+            removeNote({ type: 'REMOVE_NOTE', payload: selectedNoteId })
+          }}
         />
     </div>
   );
