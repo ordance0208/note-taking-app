@@ -30,6 +30,8 @@ const NoteEditor = ({ setEditor }) => {
 
   const onUpdate = () => {
     let displayTitle = '';
+    let lineOfText = '';
+    let displayBody = [];
 
     if (editorJSON) {
       if (editorJSON.content.length !== 0) {
@@ -52,10 +54,34 @@ const NoteEditor = ({ setEditor }) => {
       }
     }
 
+    if (editorJSON) {
+      if (editorJSON.content.length !== 0) {
+        for (let i = 0; i < editorJSON.content.length; i++) {
+          if (editorJSON.content[i].content) {
+            if(editorJSON.content[i].type === 'taskList') {
+              if(editorJSON.content[i].content[0].content[0].content) {
+                lineOfText = editorJSON.content[i].content[0].content[0].content[0].text;
+                displayBody.push(lineOfText);
+              }
+            } else {
+              if(editorJSON.content[i].content[0].text) {
+                lineOfText = editorJSON.content[i].content[0].text;
+                displayBody.push(lineOfText)
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    displayBody = displayBody.join(' ');
+    console.log(displayBody);
+
     const editedNote = {
       ...selectedNote,
       noteContent: editorJSON,
       displayTitle,
+      displayBody
     };
     editNote({ type: 'EDIT_NOTE', payload: editedNote });
   };
