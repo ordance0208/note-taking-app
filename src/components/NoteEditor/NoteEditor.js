@@ -35,8 +35,15 @@ const NoteEditor = ({ setEditor }) => {
       if (editorJSON.content.length !== 0) {
         for (let i = 0; i < editorJSON.content.length; i++) {
           if (editorJSON.content[i].content) {
-            if(editorJSON.content[i].content[0].text.trim() !== '') {
-              console.log(selectedNote.id);
+            if(editorJSON.content[i].type === 'taskList') {
+              if(editorJSON.content[i].content[0].content[0].content) {
+                displayTitle = editorJSON.content[i].content[0].content[0].content[0].text;
+              } else {
+                displayTitle = '';
+              }
+              break;
+            }
+            if(editorJSON.content[i].content[0].text) {
               displayTitle = editorJSON.content[i].content[0].text;
               break;
             }
