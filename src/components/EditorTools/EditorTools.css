@@ -1,5 +1,4 @@
 .editor-tools {
-  border-bottom: 1px solid gray;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -28,9 +27,3 @@
     margin-left: 4.3rem;
   }
 }
-
-
-
-
-
-

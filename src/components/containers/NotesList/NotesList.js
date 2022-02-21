@@ -7,7 +7,7 @@ const NotesList = ({ searchText }) => {
   const { notes } = useContext(NotesContext);
 
   const notesList = notes
-    // .filter((note) => note.displayTitle.toLowerCase().includes(searchText.toLowerCase()))
+    .filter((note) => note.displayTitle.toLowerCase().includes(searchText.toLowerCase()))
     .map((note) => { 
       return <Note note={note} key={note.id} />
     });

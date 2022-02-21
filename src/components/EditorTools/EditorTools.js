@@ -13,11 +13,12 @@ import IconHolder from '../IconHolder/IconHolder';
 import { useContext } from 'react';
 import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
 import { NotesContext } from '../../App';
+import Toolbar from '../Auxillary/Toolbar/Toolbar';
 
 const EditorTools = ({ editor }) => {
 
   const toggleEditorView = useContext(ResponsiveContext);
-  const { selectedNoteId, dispatchNotes: removeNote } = useContext(NotesContext);
+  const { setSelectedNoteId, selectedNoteId, dispatchNotes: removeNote } = useContext(NotesContext);
 
 
   const handleEditorCommand = (action) => {    
@@ -33,50 +34,54 @@ const EditorTools = ({ editor }) => {
   };
 
   return (
-    <div className="editor-tools">
-        <IconHolder 
-          icon={faChevronLeft}
-          tooltip='Go To Notes List'
-          onClick={toggleEditorView}
-        />          
-        <IconHolder
-          icon={faHeading}
-          tooltip='Toggle Heading'
-          onClick={() => handleEditorCommand('heading')}
-        />
-        <IconHolder 
-          icon={faBold}
-          tooltip='Toggle Bold'
-          onClick={() => handleEditorCommand('bold')}
-        />
-        <IconHolder
-          icon={faItalic}
-          tooltip='Toggle Italic'
-          onClick={() => handleEditorCommand('italic')}
-        />
-        <IconHolder
-          icon={faUnderline}
-          tooltip='Toggle Underline'
-          onClick={() => handleEditorCommand('underline')}
-        />
-        <IconHolder 
-          icon={faTasks}
-          tooltip='Toggle Task List'
-          onClick={() => handleEditorCommand('tasklist')}
-        />
-        <IconHolder 
-          icon={faImage}
-          tooltip='Add Image'
-          onClick={() => console.log('Image added')}
-        />
-        <IconHolder 
-          icon={faTrashAlt}
-          tooltip='Delete Note'
-          onClick={() => {
-            removeNote({ type: 'REMOVE_NOTE', payload: selectedNoteId })
-          }}
-        />
-    </div>
+    <Toolbar>
+      {selectedNoteId && <div className="editor-tools">
+          <IconHolder 
+            icon={faChevronLeft}
+            tooltip='Go To Notes List'
+            onClick={toggleEditorView}
+          />          
+          <IconHolder
+            icon={faHeading}
+            tooltip='Toggle Heading'
+            onClick={() => handleEditorCommand('heading')}
+          />
+          <IconHolder 
+            icon={faBold}
+            tooltip='Toggle Bold'
+            onClick={() => handleEditorCommand('bold')}
+          />
+          <IconHolder
+            icon={faItalic}
+            tooltip='Toggle Italic'
+            onClick={() => handleEditorCommand('italic')}
+          />
+          <IconHolder
+            icon={faUnderline}
+            tooltip='Toggle Underline'
+            onClick={() => handleEditorCommand('underline')}
+          />
+          <IconHolder 
+            icon={faTasks}
+            tooltip='Toggle Task List'
+            onClick={() => handleEditorCommand('tasklist')}
+          />
+          <IconHolder 
+            icon={faImage}
+            tooltip='Add Image'
+            onClick={() => console.log('Image added')}
+          />
+          <IconHolder 
+            icon={faTrashAlt}
+            tooltip='Delete Note'
+            onClick={() => {
+              removeNote({ type: 'REMOVE_NOTE', payload: selectedNoteId });
+              toggleEditorView();
+              setSelectedNoteId();
+            }}
+          />
+      </div>}
+    </Toolbar>
   );
 };
 
