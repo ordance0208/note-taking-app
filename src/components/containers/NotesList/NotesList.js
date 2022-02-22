@@ -7,10 +7,8 @@ const NotesList = ({ searchText }) => {
   const { notes } = useContext(NotesContext);
 
   const notesList = notes
-    .filter((note) => note.displayBody.toLowerCase().includes(searchText.toLowerCase()))
-    .map((note) => { 
-      return <Note note={note} key={note.id} />
-    });
+    .filter(note => note.displayBody.toLowerCase().includes(searchText.toLowerCase()))
+    .map(note => <Note note={note} key={note.id} /> );
 
   const calculateStyles = notes.length === 0 ? 'note-list' : 'note-list active';
 

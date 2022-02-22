@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 import NoteContainer from '../NoteContainer/NoteContainer';
 import NoteEditorContainer from '../NoteEditorContainer/NoteEditorContainer';
 import './AppContainer.css'
@@ -16,13 +16,14 @@ const AppContainer = () => {
 
   };
 
-  const calculateStyles = noteContainerActive
+  // Calculates the style (these styles are used only for mobile)
+  const styles = noteContainerActive
     ? 'app-container notes-active'
     : 'app-container editor-active'
 
   return (
     <ResponsiveContext.Provider value={toggleEditorView}>
-      <div className={calculateStyles}>
+      <div className={styles}>
         <NoteContainer />
         <NoteEditorContainer />
       </div>

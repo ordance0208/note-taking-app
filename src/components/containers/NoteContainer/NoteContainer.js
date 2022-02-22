@@ -6,6 +6,7 @@ import Toolbar from '../../Auxillary/Toolbar/Toolbar';
 import './NoteContainer.css';
 
 const NoteContainer = () => {
+  // Search text from the search field used to filter the notes by text
   const [searchText, setSearchText] = useState('');
 
   return (

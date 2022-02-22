@@ -4,6 +4,7 @@
   border-left: 1px solid gray;
   display: flex;
   flex-direction: column;
+  user-select: none;
 }
 
 @media screen and (min-width: 1440px) {

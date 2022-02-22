@@ -6,7 +6,7 @@ import { NotesContext } from '../../../App';
 import './ContainerHeader.css';
 
 const ContainerHeader = () => {
-  const { dispatchNotes: addNote, setSelectedNoteId } =
+  const { dispatchNotes: addNote, setSelectedNote } =
     useContext(NotesContext);
 
   return (
@@ -28,7 +28,7 @@ const ContainerHeader = () => {
             id: uuidv4(),
           };
           addNote({ type: 'ADD_NOTE', payload: note });
-          setSelectedNoteId(note.id);
+          setSelectedNote(note);
         }}
       />
     </div>

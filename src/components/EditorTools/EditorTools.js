@@ -18,9 +18,25 @@ import Toolbar from '../Auxillary/Toolbar/Toolbar';
 const EditorTools = ({ editor }) => {
 
   const toggleEditorView = useContext(ResponsiveContext);
-  const { setSelectedNoteId, selectedNoteId, dispatchNotes: removeNote } = useContext(NotesContext);
+  const { setSelectedNote, selectedNote, notes, dispatchNotes: removeNote } = useContext(NotesContext);
 
+  // Removes the selected note and selects the one with the same index
+  const handleNoteDelete = () => {
+    const selectedNoteIndex = notes.findIndex(note => note.id === selectedNote.id);
+    removeNote({ type: 'REMOVE_NOTE', payload: selectedNote.id });
+    toggleEditorView();
+    
+    // Retain the selected note index after deletion
+    // +1 and -1 are used instead of the index because
+    // the notes array isn't yet updated
+    if(!notes[selectedNoteIndex + 1]) {
+      setSelectedNote(notes[selectedNoteIndex - 1]);
+    } else {
+      setSelectedNote(notes[selectedNoteIndex + 1]);
+    }
+  }
 
+  // Handles text editor commands based on the action 
   const handleEditorCommand = (action) => {    
     switch(action) {
       case 'bold' : editor.commands.toggleBold(); break;
@@ -35,7 +51,7 @@ const EditorTools = ({ editor }) => {
 
   return (
     <Toolbar>
-      {selectedNoteId && <div className="editor-tools">
+      {selectedNote && <div className="editor-tools">
           <IconHolder 
             icon={faChevronLeft}
             tooltip='Go To Notes List'
@@ -74,11 +90,7 @@ const EditorTools = ({ editor }) => {
           <IconHolder 
             icon={faTrashAlt}
             tooltip='Delete Note'
-            onClick={() => {
-              removeNote({ type: 'REMOVE_NOTE', payload: selectedNoteId });
-              toggleEditorView();
-              setSelectedNoteId();
-            }}
+            onClick={handleNoteDelete}
           />
       </div>}
     </Toolbar>

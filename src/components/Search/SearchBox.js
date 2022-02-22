@@ -4,13 +4,14 @@ import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './SearchBox.css';
 
 const SearchBox = ({ setSearchText }) => {
-  const [searchField, setSearchField] = useState('');
+  const [searchFieldText, setSearchFieldText] = useState('');
+  // Used to show the 'X' when the input field is not empty
   const [showClear, setShowClear] = useState(false);
 
   const searchInput = createRef();
 
   const handleSearchChange = (e) => {
-    setSearchField(e.target.value);
+    setSearchFieldText(e.target.value);
 
     if (e.target.value !== '') {
       setShowClear(true);
@@ -19,11 +20,12 @@ const SearchBox = ({ setSearchText }) => {
     }
   };
 
+  // Sets the search value to the parent element (used to filter notes in the sibling component)
   useEffect(() => {
-    setSearchText(searchField);
-  }, [searchField]);
+    setSearchText(searchFieldText);
+  }, [searchFieldText]);
 
-  const calculateStyles = showClear
+  const calculateClearIconStyles = showClear
     ? 'icon clear-search-field active'
     : 'icon clear-search-field';
 
@@ -33,7 +35,7 @@ const SearchBox = ({ setSearchText }) => {
       <input
         type="text"
         ref={searchInput}
-        value={searchField}
+        value={searchFieldText}
         className="search-field"
         placeholder="Search all notes"
         onChange={(e) => {
@@ -42,9 +44,9 @@ const SearchBox = ({ setSearchText }) => {
       />
       <FontAwesomeIcon
         icon={faTimes}
-        className={calculateStyles}
+        className={calculateClearIconStyles}
         onClick={(e) => {
-          setSearchField('');
+          setSearchFieldText('');
           setShowClear(false);
           searchInput.current.focus();
         }}

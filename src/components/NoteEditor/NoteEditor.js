@@ -75,7 +75,6 @@ const NoteEditor = ({ setEditor }) => {
     }
     
     displayBody = displayBody.join(' ');
-    console.log(displayBody);
 
     const editedNote = {
       ...selectedNote,

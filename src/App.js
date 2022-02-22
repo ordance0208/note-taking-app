@@ -1,28 +1,21 @@
-import { createContext, useEffect, useReducer, useState } from 'react';
+import { createContext, useReducer, useState } from 'react';
 import notesReducer from './reducers/notes';
-import './App.css';
 import AppContainer from './components/containers/AppContainer/AppContainer';
+import './App.css';
 
 export const NotesContext = createContext();
 
 function App() {
   const [notes, dispatchNotes] = useReducer(notesReducer, []);
-  const [selectedNoteId, setSelectedNoteId] = useState(null);
   const [selectedNote, setSelectedNote] = useState(null);
-
-  useEffect(() => {
-    const note = notes.find((note) => note.id === selectedNoteId);
-    setSelectedNote(note);
-  }, [selectedNoteId]);
 
   return (
     <NotesContext.Provider
       value={{
         notes,
         selectedNote,
-        dispatchNotes,
-        selectedNoteId,
-        setSelectedNoteId,
+        setSelectedNote,
+        dispatchNotes
       }}
     >
       <div className="App">

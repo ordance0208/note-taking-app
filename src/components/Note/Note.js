@@ -4,16 +4,15 @@ import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
 import './Note.css';
 
 const Note = ({ note }) => {
-  const { selectedNoteId, setSelectedNoteId } = useContext(NotesContext);
+  const { selectedNote, setSelectedNote } = useContext(NotesContext);
   const toggleEditorView = useContext(ResponsiveContext);
 
   const handleClick = () => {
-    setSelectedNoteId(note.id);
+    setSelectedNote(note);
     toggleEditorView();
-    console.log(note.id);
   }
 
-  const calculateStyles = selectedNoteId === note.id ? 'note selected' : 'note';
+  const calculateStyles = selectedNote.id  === note.id ? 'note selected' : 'note';
 
   return (
     <div onClick={handleClick} 

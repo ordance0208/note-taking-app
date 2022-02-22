@@ -7,13 +7,12 @@
   overflow-y: scroll;
   width: 100%;
   --ms-overflow-style: none; 
-  scrollbar-width: none
+  scrollbar-width: none;
+  user-select: none;
 }
 
 .note-list.active {
   justify-content: flex-start;
-  --ms-overflow-style: none; 
-  scrollbar-width: none
 }
 
 .note-list::-webkit-scrollbar,
