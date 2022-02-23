@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
+import moment from 'moment';
 import IconHolder from '../../IconHolder/IconHolder';
 import { NotesContext } from '../../../App';
 import './ContainerHeader.css';
@@ -24,8 +25,9 @@ const ContainerHeader = () => {
           const note = {
             noteContent: {},
             displayTitle: '',
-            displayBody: '',
+            wordsToQuery: '',
             id: uuidv4(),
+            createdAt: moment()
           };
           addNote({ type: 'ADD_NOTE', payload: note });
           setSelectedNote(note);

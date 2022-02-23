@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.65rem;
+  user-select: none;
 }
 
 .container-header .icon-holder:first-child .tooltip {

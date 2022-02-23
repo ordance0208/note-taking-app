@@ -1,3 +1,4 @@
+import { useContext, useRef } from 'react';
 import {
   faImage,
   faTasks,
@@ -8,12 +9,11 @@ import {
   faChevronLeft,
   faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
-import './EditorTools.css';
 import IconHolder from '../IconHolder/IconHolder';
-import { useContext } from 'react';
 import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
 import { NotesContext } from '../../App';
 import Toolbar from '../Auxillary/Toolbar/Toolbar';
+import './EditorTools.css';
 
 const EditorTools = ({ editor }) => {
 
@@ -36,14 +36,21 @@ const EditorTools = ({ editor }) => {
     }
   }
 
+  // The input for uploading images is hidden
+  // This reference is used to "click" the
+  // the input when the image icon is clicked
+  const imageUpload = useRef();
+
   // Handles text editor commands based on the action 
-  const handleEditorCommand = (action) => {    
+  // and then focueses back to the editor
+  const handleEditorCommand = (action, payload) => {    
     switch(action) {
       case 'bold' : editor.commands.toggleBold(); break;
       case 'italic' : editor.commands.toggleItalic(); break;
       case 'underline' : editor.commands.toggleUnderline(); break;
-      case 'heading' : editor.commands.toggleHeading({ level : 1 }); break;
+      case 'heading' : editor.commands.toggleHeading({ level : payload }); break;
       case 'tasklist' : editor.commands.toggleTaskList(); break;
+      case 'add-image' : editor.commands.setImage({ src: payload }); break;
     }
 
     editor.commands.focus();
@@ -60,33 +67,43 @@ const EditorTools = ({ editor }) => {
           <IconHolder
             icon={faHeading}
             tooltip='Toggle Heading'
-            onClick={() => handleEditorCommand('heading')}
+            onClick={() => handleEditorCommand('heading', 1)}
           />
           <IconHolder 
             icon={faBold}
             tooltip='Toggle Bold'
-            onClick={() => handleEditorCommand('bold')}
+            onClick={() => handleEditorCommand('bold', undefined)}
           />
           <IconHolder
             icon={faItalic}
             tooltip='Toggle Italic'
-            onClick={() => handleEditorCommand('italic')}
+            onClick={() => handleEditorCommand('italic', undefined)}
           />
           <IconHolder
             icon={faUnderline}
             tooltip='Toggle Underline'
-            onClick={() => handleEditorCommand('underline')}
+            onClick={() => handleEditorCommand('underline', undefined)}
           />
           <IconHolder 
             icon={faTasks}
             tooltip='Toggle Task List'
-            onClick={() => handleEditorCommand('tasklist')}
+            onClick={() => handleEditorCommand('tasklist', undefined)}
           />
           <IconHolder 
             icon={faImage}
             tooltip='Add Image'
-            onClick={() => console.log('Image added')}
+            onClick={() => imageUpload.current.click()}
           />
+          <input ref={imageUpload} type='file' onChange={(e) => {
+            const fileReader = new FileReader();
+
+            fileReader.addEventListener('load', () => {
+              const uploadedImage = fileReader.result;
+              handleEditorCommand('add-image', uploadedImage);
+            });
+
+            fileReader.readAsDataURL(e.target.files[0])
+          }} accept='image/*' id='image-upload'/>
           <IconHolder 
             icon={faTrashAlt}
             tooltip='Delete Note'

@@ -4,6 +4,7 @@ import NoteEditor from '../../NoteEditor/NoteEditor';
 import './NoteEditorContainer.css';
 
 const NoteEditorContainer = () => {
+  // Editor reference passed to the editor tools component
   const [editor, setEditor] = useState(null);
 
   return (

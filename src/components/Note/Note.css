@@ -6,10 +6,15 @@
   user-select: none;
 }
 
-.note h3 {
+.note .note-display-title {
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  margin-bottom: 0.2rem;
+}
+
+.note .note-display-body {
+  margin-bottom: 0.2rem;
 }
 
 .note:hover {

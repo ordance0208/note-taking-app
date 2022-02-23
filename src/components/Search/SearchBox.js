@@ -5,7 +5,7 @@ import './SearchBox.css';
 
 const SearchBox = ({ setSearchText }) => {
   const [searchFieldText, setSearchFieldText] = useState('');
-  // Used to show the 'X' when the input field is not empty
+  // Used to show the clear icon (X) when the input field is not empty
   const [showClear, setShowClear] = useState(false);
 
   const searchInput = createRef();
@@ -13,6 +13,7 @@ const SearchBox = ({ setSearchText }) => {
   const handleSearchChange = (e) => {
     setSearchFieldText(e.target.value);
 
+    // Shows/hides the clear icon depending on the value of the input
     if (e.target.value !== '') {
       setShowClear(true);
     } else {
@@ -37,7 +38,7 @@ const SearchBox = ({ setSearchText }) => {
         ref={searchInput}
         value={searchFieldText}
         className="search-field"
-        placeholder="Search all notes"
+        placeholder="Search all notes..."
         onChange={(e) => {
           handleSearchChange(e);
         }}
@@ -45,7 +46,7 @@ const SearchBox = ({ setSearchText }) => {
       <FontAwesomeIcon
         icon={faTimes}
         className={calculateClearIconStyles}
-        onClick={(e) => {
+        onClick={() => {
           setSearchFieldText('');
           setShowClear(false);
           searchInput.current.focus();
