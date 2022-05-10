@@ -1,6 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { NotesContext } from '../../App';
-import { ResponsiveContext } from '../containers/AppContainer/AppContainer';
+import { ResponsiveContext } from '../AppContainer/AppContainer';
 import './Note.css';
 
 const Note = ({ note }) => {
@@ -14,13 +14,11 @@ const Note = ({ note }) => {
 
   const calculateStyles = selectedNote.id  === note.id ? 'note selected' : 'note';
 
-  // console.log(note.wordsToQuery);
-
   return (
     <div onClick={handleClick} 
       className={calculateStyles}>
       <h3 className='note-display-title'>{note.displayTitle || 'New Note'}</h3>
-     
+      <p className={note.displayBody ? 'note-display-body' : 'note-display-body hide'}>{note.displayBody || 'A'}</p>
       <p className='note-created-date'>{note.createdAt.format('DD/MM/YYYY')}</p>
     </div>
   )

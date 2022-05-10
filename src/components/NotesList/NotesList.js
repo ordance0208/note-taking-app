@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { NotesContext } from '../../../App';
-import Note from '../../Note/Note';
+import { NotesContext } from '../../App';
+import Note from '../Note/Note';
 import './NotesList.css';
 
 const NotesList = ({ searchText }) => {

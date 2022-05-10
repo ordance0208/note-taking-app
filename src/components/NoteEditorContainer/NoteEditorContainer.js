@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import EditorTools from '../../EditorTools/EditorTools';
-import NoteEditor from '../../NoteEditor/NoteEditor';
+import EditorTools from '../EditorTools/EditorTools';
+import NoteEditor from '../NoteEditor/NoteEditor';
 import './NoteEditorContainer.css';
 
 const NoteEditorContainer = () => {

@@ -29,8 +29,6 @@
   align-items: center;
 }
 
-
-
 ul[data-type='taskList'] {
   list-style: none;
   padding: 0;

@@ -3,8 +3,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  align-self: center;
-  width: 100%;
+  align-self: none;
   border-bottom: 1px solid gray;
 }
 
@@ -15,7 +14,7 @@
   outline: none;
 }
 
-.search-box .icon {
+.search-box .search-icon {
   font-size: 1.2rem;
   margin-right: 0.5rem;
 }

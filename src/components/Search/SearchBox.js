@@ -32,7 +32,7 @@ const SearchBox = ({ setSearchText }) => {
 
   return (
     <div className="search-box">
-      <FontAwesomeIcon icon={faSearch} className="icon" />
+      <FontAwesomeIcon icon={faSearch} className="search-icon" />
       <input
         type="text"
         ref={searchInput}
