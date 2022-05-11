@@ -5,17 +5,17 @@ import './Note.css';
 
 const Note = ({ note }) => {
   const { selectedNote, setSelectedNote } = useContext(NotesContext);
-  const toggleEditorView = useContext(ResponsiveContext);
+  const { enableEditorView } = useContext(ResponsiveContext);
 
-  const handleClick = () => {
+  const handleNoteClick = () => {
     setSelectedNote(note);
-    toggleEditorView();
-  }
+    enableEditorView();
+  };
 
   const calculateStyles = selectedNote.id  === note.id ? 'note selected' : 'note';
 
   return (
-    <div onClick={handleClick} 
+    <div onClick={handleNoteClick} 
       className={calculateStyles}>
       <h3 className='note-display-title'>{note.displayTitle || 'New Note'}</h3>
       <p className={note.displayBody ? 'note-display-body' : 'note-display-body hide'}>{note.displayBody || 'A'}</p>

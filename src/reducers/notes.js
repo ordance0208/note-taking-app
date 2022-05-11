@@ -11,6 +11,7 @@ const notesReducer = (state = notes, action) => {
         return note;
       }
     });
+    case 'LOAD_NOTES' : return action.payload;
     default : return state
   }
 };

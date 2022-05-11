@@ -1,7 +1,7 @@
 import { createContext, useReducer, useState, useEffect } from 'react';
 import notesReducer from './reducers/notes';
 import AppContainer from './components/AppContainer/AppContainer';
-import moment from 'moment';
+import { saveNotes, loadNotes } from './components/utils/localStorage';
 import './App.css';
 
 export const NotesContext = createContext();
@@ -10,24 +10,20 @@ function App() {
   const [notes, dispatchNotes] = useReducer(notesReducer, []);
   const [selectedNote, setSelectedNote] = useState(null);
 
+  // When the application starts it loads the saved notes
+  // from local storage (if any).
   useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('notes'));
-    if(!savedNotes) return;
-    
-    for(let i = 0; i < savedNotes.length; i++) {
+    loadNotes(dispatchNotes, setSelectedNote);
 
-      const note = savedNotes[i];
-      note.createdAt = moment(note.createdAt);
+    // Updates the notes when they're changed from another window on the same browser
+    window.addEventListener('storage', () => loadNotes(dispatchNotes, setSelectedNote));
 
-      dispatchNotes({ type: 'ADD_NOTE', payload: note})
-    }
-
-    setSelectedNote(savedNotes[0]);
+    console.log('fired')
   }, []);
 
+  // When the notes state is changed its changes are saved in local storage.
   useEffect(() => {
-    const stringifiedNotes = JSON.stringify(notes);
-    localStorage.setItem('notes', stringifiedNotes);
+    saveNotes(notes);
   }, [notes]);
 
   return (

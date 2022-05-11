@@ -15,7 +15,7 @@ import { NotesContext } from '../../App';
 import './EditorTools.css';
 
 const EditorTools = ({ editor }) => {
-  const toggleEditorView = useContext(ResponsiveContext);
+  const { enableNotesContainerView } = useContext(ResponsiveContext);
   const {
     setSelectedNote,
     selectedNote,
@@ -29,7 +29,7 @@ const EditorTools = ({ editor }) => {
       (note) => note.id === selectedNote.id
     );
     removeNote({ type: 'REMOVE_NOTE', payload: selectedNote.id });
-    toggleEditorView();
+    enableNotesContainerView();
 
     // Retain the selected note index after deletion
     // +1 and -1 are used instead of the index because
@@ -80,7 +80,7 @@ const EditorTools = ({ editor }) => {
           <IconHolder
             icon={faChevronLeft}
             tooltip="Go To Notes List"
-            onClick={toggleEditorView}
+            onClick={enableNotesContainerView}
           />
           <IconHolder
             icon={faHeading}

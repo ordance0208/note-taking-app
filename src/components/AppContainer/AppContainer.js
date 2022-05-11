@@ -9,11 +9,15 @@ const AppContainer = () => {
   // These are only used for mobile responsiveness
   const [noteContainerActive, setNoteContainerActive] = useState(true);
   const [editorContainerActive, setEditorContainerActive] = useState(false); 
+  
+  const enableEditorView = () => {
+    setNoteContainerActive(false);
+    setEditorContainerActive(true);
+  };
 
-  const toggleEditorView = () => {
-    setNoteContainerActive(!noteContainerActive);
-    setEditorContainerActive(!editorContainerActive);
-
+  const enableNotesContainerView = () => {
+    setNoteContainerActive(true);
+    setEditorContainerActive(false);
   };
 
   // Calculates the style (these styles are used only for mobile)
@@ -22,7 +26,10 @@ const AppContainer = () => {
     : 'app-container editor-active'
 
   return (
-    <ResponsiveContext.Provider value={toggleEditorView}>
+    <ResponsiveContext.Provider value={{
+      enableEditorView,
+      enableNotesContainerView
+    }}>
       <div className={styles}>
         <NoteContainer />
         <NoteEditorContainer />

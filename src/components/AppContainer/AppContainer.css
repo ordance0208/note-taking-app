@@ -6,7 +6,7 @@
   position: relative;
 }
 
-@media screen and (max-width: 768px) and (orientation: portrait) {  
+@media screen and (max-width: 768px) {  
   .app-container.notes-active > div:last-child {
     display: none;
   }

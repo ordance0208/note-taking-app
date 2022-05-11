@@ -29,7 +29,7 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) and (orientation: portrait) {
+@media screen and (max-width: 768px) {
   .editor-tools .icon-holder:first-child {
     display: block;
   }

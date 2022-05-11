@@ -80,7 +80,6 @@ const NoteEditor = ({ setEditor }) => {
               lineOfText += editorJSON.content[i].content[j].text;
             }
 
-            // const lineOfText = editorJSON.content[i].content[0].text;
             wordsToQuery.push(lineOfText);
 
             // Only add the first line that contains a text as displayTitle

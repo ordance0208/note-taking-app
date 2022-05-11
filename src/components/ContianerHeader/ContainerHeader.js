@@ -1,22 +1,25 @@
-import { useContext } from 'react';
-import { faBars, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { useState, useContext } from 'react';
+import { faBars, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 import IconHolder from '../IconHolder/IconHolder';
 import { NotesContext } from '../../App';
+import MenuDrawer from '../Drawer/MenuDrawer';
 import './ContainerHeader.css';
 
 const ContainerHeader = () => {
-  const { dispatchNotes: addNote, setSelectedNote } =
-    useContext(NotesContext);
+  const [menuDrawerOpened, setMenuDrawerOpened] = useState(false);
+
+  const { dispatchNotes: addNote, setSelectedNote } = useContext(NotesContext);
 
   return (
     <div className="container-header">
+      <MenuDrawer menuDrawerOpened={menuDrawerOpened} />
       <IconHolder
-        icon={faBars}
-        tooltip="Menu"
-        onClick={() => console.log('Menu should open')}
-      />
+          icon={menuDrawerOpened ? faTimes : faBars}
+          tooltip={menuDrawerOpened ? 'Close Menu' : 'Menu'}
+          onClick={() => setMenuDrawerOpened(!menuDrawerOpened)}
+        />
       <h3>All Notes</h3>
       <IconHolder
         icon={faEdit}
@@ -28,10 +31,9 @@ const ContainerHeader = () => {
             dispayBody: '',
             wordsToQuery: '',
             id: uuidv4(),
-            createdAt: moment()
+            createdAt: moment(),
           };
 
-          console.log(typeof note.createdAt);
           addNote({ type: 'ADD_NOTE', payload: note });
           setSelectedNote(note);
         }}

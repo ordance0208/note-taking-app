@@ -9,9 +9,9 @@
   opacity: 0;
   visibility: hidden;
   color: #fafafa;
-  font-size: 1.15rem;
+  font-size: 1rem;
   white-space: nowrap;
   z-index: 123;
-  transition: all 400ms ease;
+  transition: all 200ms ease 300ms;
   user-select: none;
 }

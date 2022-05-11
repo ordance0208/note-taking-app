@@ -1,0 +1,44 @@
+.menu-drawer {
+  height: 100%;
+  width: 300px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 400ms ease;
+  border-right: 1px solid gray;
+}
+
+.menu-drawer.active {
+  transform: translateX(0%);
+}
+
+.menu-drawer .navigation {
+  border-top: 1px solid gray;
+  margin-top: 2.95rem;
+}
+
+.menu-drawer .navigation ul li a {
+  color: #333;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+}
+
+.menu-drawer .navigation ul li {
+  border-bottom: 1px solid gray;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.menu-drawer .navigation ul li a,
+.menu-drawer .navigation ul li span {
+  margin-left: 1rem;
+}
+
+.menu-drawer .navigation ul li span {
+  margin-right: 0.5rem;
+}
