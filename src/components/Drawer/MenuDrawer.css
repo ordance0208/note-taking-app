@@ -6,8 +6,9 @@
   top: 0;
   left: 0;
   transform: translateX(-100%);
-  transition: all 400ms ease;
+  transition: transform 250ms ease;
   border-right: 1px solid gray;
+  z-index: 10;
 }
 
 .menu-drawer.active {
@@ -41,4 +42,13 @@
 
 .menu-drawer .navigation ul li span {
   margin-right: 0.5rem;
+}
+
+.navbar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  z-index: 9;
 }

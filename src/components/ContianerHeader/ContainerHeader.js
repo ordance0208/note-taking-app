@@ -1,26 +1,27 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { faBars, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 import IconHolder from '../IconHolder/IconHolder';
-import { NotesContext } from '../../App';
-import MenuDrawer from '../Drawer/MenuDrawer';
+import { NavbarContext, NotesContext } from '../../App';
 import './ContainerHeader.css';
 
 const ContainerHeader = () => {
-  const [menuDrawerOpened, setMenuDrawerOpened] = useState(false);
-
   const { dispatchNotes: addNote, setSelectedNote } = useContext(NotesContext);
+  const { menuDrawerOpened, setMenuDrawerOpened } = useContext(NavbarContext);
+
+  const toggleDrawer = () => {
+    setMenuDrawerOpened(!menuDrawerOpened);
+  }
 
   return (
     <div className="container-header">
-      <MenuDrawer menuDrawerOpened={menuDrawerOpened} />
       <IconHolder
           icon={menuDrawerOpened ? faTimes : faBars}
           tooltip={menuDrawerOpened ? 'Close Menu' : 'Menu'}
-          onClick={() => setMenuDrawerOpened(!menuDrawerOpened)}
+          onClick={toggleDrawer}
         />
-      <h3>All Notes</h3>
+      <h3>Noteify</h3>
       <IconHolder
         icon={faEdit}
         tooltip="New Note"

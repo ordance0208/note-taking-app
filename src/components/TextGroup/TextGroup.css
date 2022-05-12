@@ -1,0 +1,22 @@
+.text-group {
+  color: #333;
+  font-size: 1.35rem;
+}
+
+.text-group .text-group-heading {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.text-group p {
+  line-height: 1.35;
+}
+
+.text-group a {
+  color: #333;
+  border-bottom: 2px solid var(--primary-color);
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.05rem;
+}
