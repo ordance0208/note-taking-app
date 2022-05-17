@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { RiQuestionFill } from 'react-icons/ri';
+import { FaStickyNote } from 'react-icons/fa';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import './MenuDrawer.css';
 
@@ -14,12 +16,12 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
           <ul>
             <li>
               <Link onClick={handleDrawerClose} to="/dashboard">
-                Dashboard
+              <FaStickyNote /> Dashboard
               </Link>
             </li>
             <li>
               <Link onClick={handleDrawerClose} to="/about">
-                About
+                <RiQuestionFill/> About
               </Link>
             </li>
             <li>

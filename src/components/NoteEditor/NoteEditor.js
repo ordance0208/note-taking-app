@@ -9,7 +9,7 @@ import { NotesContext } from '../../App';
 import './NoteEditor.css';
 
 const NoteEditor = ({ setEditor }) => {
-  const { selectedNote, dispatchNotes: editNote } = useContext(NotesContext);
+  const { activeNote, dispatchNotes: editNote } = useContext(NotesContext);
   const [editorJSON, setEdiorJSON] = useState(null);
 
   //#region editor initialiation
@@ -38,8 +38,6 @@ const NoteEditor = ({ setEditor }) => {
     let displayBody = '';
     let displayTitleAdded = false;
     let wordsToQuery = [];
-
-    console.log(editorJSON);
 
     // Adding all the words to the note so it can later be used for querying
     // as well as adding the note title and (a snippet of) the body that will be
@@ -100,7 +98,7 @@ const NoteEditor = ({ setEditor }) => {
 
     // Edited note dispatched to the reducer
     const editedNote = {
-      ...selectedNote,
+      ...activeNote,
       noteContent: editorJSON,
       displayTitle,
       displayBody,
@@ -115,17 +113,19 @@ const NoteEditor = ({ setEditor }) => {
   }, [editorJSON]);
 
   useEffect(() => {
-    if (!selectedNote) return;
+    if (!activeNote) return;
+
+    if(!editor) { return; }
 
     // Checking if the note is empty
     // if it is the editor content is set to ''
     // if it isn't the editor content is set to the selected note's content
-    if (Object.keys(selectedNote.noteContent).length !== 0) {
-      editor.commands.setContent(selectedNote.noteContent);
+    if (Object.keys(activeNote.noteContent).length !== 0) {
+      editor.commands.setContent(activeNote.noteContent);
     } else {
       editor.commands.setContent('');
     }
-  }, [selectedNote]);
+  }, [activeNote, editor]);
 
   // Setting the current editor reference in the parent component
   // so that the editor commands can be used from its sibling
@@ -133,7 +133,7 @@ const NoteEditor = ({ setEditor }) => {
     setEditor(editor);
   }, [editor]);
 
-  return selectedNote ? (
+  return activeNote ? (
     <EditorContent editor={editor} className="text-editor" />
   ) : (
     <div className="editor-inactive">

@@ -1,18 +1,24 @@
 import { useContext } from 'react';
+import { useEffect } from 'react';
 import { NotesContext } from '../../App';
 import { ResponsiveContext } from '../AppContainer/AppContainer';
 import './Note.css';
 
 const Note = ({ note }) => {
-  const { selectedNote, setSelectedNote } = useContext(NotesContext);
+  const { activeNote, setActiveNote } = useContext(NotesContext);
   const { enableEditorView } = useContext(ResponsiveContext);
 
   const handleNoteClick = () => {
-    setSelectedNote(note);
     enableEditorView();
+    setActiveNote(note);    
   };
 
-  const calculateStyles = selectedNote.id  === note.id ? 'note selected' : 'note';
+  useEffect(() => {
+    if(activeNote) return;
+    setActiveNote(note);
+  }, []);
+
+  const calculateStyles = `note ${activeNote && note.id === activeNote.id ? 'selected' : ''}`;
 
   return (
     <div onClick={handleNoteClick} 
@@ -21,7 +27,7 @@ const Note = ({ note }) => {
       <p className={note.displayBody ? 'note-display-body' : 'note-display-body hide'}>{note.displayBody || 'A'}</p>
       <p className='note-created-date'>{note.createdAt.format('DD/MM/YYYY')}</p>
     </div>
-  )
+  );
 };
 
 export default Note;

@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import NoteContainer from '../NoteContainer/NoteContainer';
 import NoteEditorContainer from '../NoteEditorContainer/NoteEditorContainer';
 import './AppContainer.css';
