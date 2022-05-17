@@ -1,12 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tooltip from '../Tooltip/Tooltip';
 import './IconHolder.css';
 
-const IconHolder = ({ icon, tooltip, onClick }) => {
+const IconHolder = ({ icon, tooltip, onClick, reactIcon }) => {
   return (
-    <div className='icon-holder'>
+    <div className='icon-holder' onClick={onClick}>
       <Tooltip text={tooltip}/>
-      <FontAwesomeIcon className='icon' icon={icon} onClick={onClick}/>
+      {reactIcon}
     </div>
   )
 };

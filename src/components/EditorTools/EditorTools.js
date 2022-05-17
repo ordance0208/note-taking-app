@@ -1,14 +1,7 @@
 import { useContext, useRef } from 'react';
-import {
-  faImage,
-  faTasks,
-  faBold,
-  faItalic,
-  faUnderline,
-  faHeading,
-  faChevronLeft,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { RiHeading, RiBold, RiItalic, RiUnderline, RiImageAddFill } from 'react-icons/ri';
+import { VscTasklist } from 'react-icons/vsc';
+import { FiTrash2, FiChevronLeft } from 'react-icons/fi';
 import IconHolder from '../IconHolder/IconHolder';
 import { ResponsiveContext } from '../AppContainer/AppContainer';
 import { NotesContext } from '../../App';
@@ -17,8 +10,8 @@ import './EditorTools.css';
 const EditorTools = ({ editor }) => {
   const { enableNotesContainerView } = useContext(ResponsiveContext);
   const {
-    setSelectedNote,
-    selectedNote,
+    setActiveNote,
+    activeNote,
     notes,
     dispatchNotes: removeNote,
   } = useContext(NotesContext);
@@ -26,18 +19,18 @@ const EditorTools = ({ editor }) => {
   // Removes the selected note and selects the one with the same index
   const handleNoteDelete = () => {
     const selectedNoteIndex = notes.findIndex(
-      (note) => note.id === selectedNote.id
+      (note) => note.id === activeNote.id
     );
-    removeNote({ type: 'REMOVE_NOTE', payload: selectedNote.id });
+    removeNote({ type: 'REMOVE_NOTE', payload: activeNote.id });
     enableNotesContainerView();
 
     // Retain the selected note index after deletion
     // +1 and -1 are used instead of the index because
     // the notes array isn't yet updated
     if (!notes[selectedNoteIndex + 1]) {
-      setSelectedNote(notes[selectedNoteIndex - 1]);
+      setActiveNote(notes[selectedNoteIndex - 1]);
     } else {
-      setSelectedNote(notes[selectedNoteIndex + 1]);
+      setActiveNote(notes[selectedNoteIndex + 1]);
     }
   };
 
@@ -75,42 +68,48 @@ const EditorTools = ({ editor }) => {
 
   return (
     <>
-      {selectedNote && (
+      {activeNote && (
         <div className="editor-tools">
           <IconHolder
-            icon={faChevronLeft}
             tooltip="Go To Notes List"
             onClick={enableNotesContainerView}
+            reactIcon={<FiChevronLeft />}
           />
           <IconHolder
-            icon={faHeading}
+            // icon={faHeading}
             tooltip="Toggle Heading"
             onClick={() => handleEditorCommand('heading', 1)}
+            reactIcon={<RiHeading />}
           />
           <IconHolder
-            icon={faBold}
+            // icon={faBold}
             tooltip="Toggle Bold"
             onClick={() => handleEditorCommand('bold', undefined)}
+            reactIcon={<RiBold />}
           />
           <IconHolder
-            icon={faItalic}
+            // icon={faItalic}
             tooltip="Toggle Italic"
             onClick={() => handleEditorCommand('italic', undefined)}
+            reactIcon={<RiItalic />}
           />
           <IconHolder
-            icon={faUnderline}
+            // icon={faUnderline}
             tooltip="Toggle Underline"
             onClick={() => handleEditorCommand('underline', undefined)}
+            reactIcon={<RiUnderline />}
           />
           <IconHolder
-            icon={faTasks}
+            // icon={faTasks}
             tooltip="Toggle Task List"
             onClick={() => handleEditorCommand('tasklist', undefined)}
+            reactIcon={<VscTasklist />}
           />
           <IconHolder
-            icon={faImage}
+            // icon={faImage}
             tooltip="Add Image"
             onClick={() => imageUpload.current.click()}
+            reactIcon={<RiImageAddFill />}
           />
           <input
             ref={imageUpload}
@@ -129,9 +128,10 @@ const EditorTools = ({ editor }) => {
             id="image-upload"
           />
           <IconHolder
-            icon={faTrashAlt}
+            // icon={faTrashAlt}
             tooltip="Delete Note"
             onClick={handleNoteDelete}
+            reactIcon={<FiTrash2 />}
           />
         </div>
       )}
