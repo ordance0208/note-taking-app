@@ -8,25 +8,17 @@ const saveNotes = (notes) => {
 
 // Loads the notes from local storage (if any) 
 // and updates the state.
-const loadNotes = (dispatchNotes, setSelectedNote) => {
+const loadNotes = (dispatchNotes, setActiveNote) => {
   let savedNotes = JSON.parse(localStorage.getItem('notes'));
 
-  if(!savedNotes) return;
-  if(savedNotes.length === 0) {
-    dispatchNotes({ type: 'LOAD_NOTES', payload: savedNotes });
-    setSelectedNote(null);
-    return;
+  if(!savedNotes || savedNotes.length === 0) {
+    setActiveNote(null);
+    dispatchNotes([]);
   }
 
-  // Because the data was stringified the createdAt property is of type string,
-  // this code is converting it back to an moment object so it can be formatted later.
-  savedNotes = savedNotes.map(note => {
-    return {...note, createdAt: moment(note.createdAt) }
-  });
-
-  setSelectedNote(savedNotes[0]);
-  
-  dispatchNotes({ type: 'LOAD_NOTES', payload: savedNotes });
+  savedNotes = savedNotes.map(note => ({...note, createdAt: moment(note.createdAt)}));
+  setActiveNote(savedNotes[0]);
+  dispatchNotes({ type: 'LOAD_NOTES', payload: savedNotes })
 };
 
 export { saveNotes, loadNotes };

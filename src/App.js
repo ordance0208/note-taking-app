@@ -12,24 +12,20 @@ export const NotesContext = createContext();
 
 function App() {
   const [notes, dispatchNotes] = useReducer(notesReducer, []);
-  const [selectedNote, setSelectedNote] = useState(null);
+  const [activeNote, setActiveNote] = useState(null);
 
   const [menuDrawerOpened, setMenuDrawerOpened] = useState(false);
 
-  // When the application starts it loads the saved notes
-  // from local storage (if any).
   useEffect(() => {
-    loadNotes(dispatchNotes, setSelectedNote);
+    loadNotes(dispatchNotes, setActiveNote);
 
-    // Updates the notes when they're changed from another window on the same browser
-    window.addEventListener('storage', () =>
-      loadNotes(dispatchNotes, setSelectedNote)
-    );
-
-    console.log('fired');
+    // Updates the changes when they happen in a different tab
+    window.addEventListener('storage', () => {
+      loadNotes(dispatchNotes, setActiveNote);
+    });
   }, []);
 
-  // When the notes state is changed its changes are saved in local storage.
+  // Save the changes when the notes state is changed.
   useEffect(() => {
     saveNotes(notes);
   }, [notes]);
@@ -38,18 +34,21 @@ function App() {
     <NotesContext.Provider
       value={{
         notes,
-        selectedNote,
-        setSelectedNote,
+        activeNote,
+        setActiveNote,
         dispatchNotes,
       }}
     >
       <NavbarContext.Provider value={{ menuDrawerOpened, setMenuDrawerOpened }}>
         <div className="App">
-          <MenuDrawer menuDrawerOpened={menuDrawerOpened} setMenuDrawerOpened={setMenuDrawerOpened}/>
+          <MenuDrawer
+            menuDrawerOpened={menuDrawerOpened}
+            setMenuDrawerOpened={setMenuDrawerOpened}
+          />
           <Routes>
-            <Route path='/' element={<Navigate to='/dashboard' replace/>}/>
-            <Route path='/dashboard' element={<AppContainer />}/>
-            <Route path='/about' element={<About />}/>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<AppContainer />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </div>
       </NavbarContext.Provider>
