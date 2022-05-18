@@ -34,16 +34,20 @@ const NoteEditor = ({ setEditor }) => {
     if (!editorJSON) return;
     if (editorJSON.content.length === 0) return;
 
+    let lineOfText = '';
     let displayTitle = '';
     let displayBody = '';
     let displayTitleAdded = false;
     let wordsToQuery = [];
 
+    console.log(editorJSON);
+
     // Adding all the words to the note so it can later be used for querying
     // as well as adding the note title and (a snippet of) the body that will be
-    // shown on each notes when listed in the notes list component
-    // Heavely nested code because of the editor output structure
+    // shown on each note when listed in the notes list component
+    // Heavily nested code because of the editor output structure
     for (let i = 0; i < editorJSON.content.length; i++) {
+      lineOfText = '';
       if (editorJSON.content[i].content) {
         if (editorJSON.content[i].type === 'taskList') {
           // Checking if the current line on the editor is a task list
@@ -54,25 +58,14 @@ const NoteEditor = ({ setEditor }) => {
           ) {
             for (let j = 0; j < editorJSON.content[i].content.length; j++) {
               if (editorJSON.content[i].content[j].content[0].content) {
-                const lineOfText =
+                lineOfText =
                   editorJSON.content[i].content[j].content[0].content[0].text;
                 wordsToQuery.push(lineOfText);
-
-                // Only add the first line that contains a text as displayTitle
-                // and add the second line that contains a text as displayBody
-                if (!displayTitleAdded) {
-                  displayTitle = lineOfText;
-                  displayTitleAdded = true;
-                } else {
-                  displayBody = displayBody === '' ? lineOfText : displayBody;
-                }
               }
             }
           }
         } else {
           // If the current line is not a task list it's a paragraph
-          let lineOfText = '';
-
           if (editorJSON.content[i].content[0].text) {
             for (let j = 0; j < editorJSON.content[i].content.length; j++) {
               lineOfText += editorJSON.content[i].content[j].text;
@@ -80,21 +73,20 @@ const NoteEditor = ({ setEditor }) => {
 
             wordsToQuery.push(lineOfText);
 
-            // Only add the first line that contains a text as displayTitle
-            // and add the second line that contains a text as displayBody
-            if (!displayTitleAdded) {
-              displayTitle = lineOfText;
-              displayTitleAdded = true;
-            } else {
-              displayBody = displayBody === '' ? lineOfText : displayBody;
-            }
           }
         }
+      }
+
+      if (!displayTitleAdded) {
+        displayTitle = lineOfText;
+        displayTitleAdded = true;
+      } else {
+        displayBody = displayBody === '' ? lineOfText : displayBody;
       }
     }
 
     // Query words converted into a string for easier searching
-    // wordsToQuery = wordsToQuery.join(' ');
+    wordsToQuery = wordsToQuery.join(' ');
 
     // Edited note dispatched to the reducer
     const editedNote = {

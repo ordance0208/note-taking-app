@@ -10,6 +10,7 @@
 .note .note-display-body  {
   overflow: hidden;
   text-overflow:ellipsis;
+  white-space: nowrap;
   margin-bottom: 0.3rem;
 }
 
