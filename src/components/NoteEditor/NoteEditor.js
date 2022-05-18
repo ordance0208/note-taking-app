@@ -53,6 +53,7 @@ const NoteEditor = ({ setEditor }) => {
           // Checking if the current line on the editor is a task list
           // because it has different properties than a regular one
           if (
+            // Checking if the task item has text
             editorJSON.content[i].content.length > 0 &&
             editorJSON.content[i].content[0].content[0].content
           ) {
@@ -67,12 +68,12 @@ const NoteEditor = ({ setEditor }) => {
         } else {
           // If the current line is not a task list it's a paragraph
           if (editorJSON.content[i].content[0].text) {
+            // If a part of the line is formatted it will be added as a new array item
+            // and by doing this we are concatinating it to be one string
             for (let j = 0; j < editorJSON.content[i].content.length; j++) {
               lineOfText += editorJSON.content[i].content[j].text;
             }
-
             wordsToQuery.push(lineOfText);
-
           }
         }
       }
@@ -88,7 +89,7 @@ const NoteEditor = ({ setEditor }) => {
     // Query words converted into a string for easier searching
     wordsToQuery = wordsToQuery.join(' ');
 
-    // Edited note dispatched to the reducer
+    // The active note with its changes is getting dispatched to the reducer
     const editedNote = {
       ...activeNote,
       noteContent: editorJSON,
