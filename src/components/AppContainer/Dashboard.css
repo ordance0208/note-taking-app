@@ -1,4 +1,4 @@
-.app-container {
+.dashboard {
   width: 100%;
   height: 100%;
   display: flex;
@@ -7,11 +7,11 @@
 }
 
 @media screen and (max-width: 768px) {  
-  .app-container.notes-active > div:last-child {
+  .dashboard.notes-active > div:last-child {
     display: none;
   }
 
-  .app-container.editor-active > div:first-child {
+  .dashboard.editor-active > div:first-child {
     display: none;
   }
 }

@@ -94,7 +94,7 @@ const NoteEditor = ({ setEditor }) => {
     }
 
     // Query words converted into a string for easier searching
-    wordsToQuery = wordsToQuery.join(' ');
+    // wordsToQuery = wordsToQuery.join(' ');
 
     // Edited note dispatched to the reducer
     const editedNote = {
@@ -107,16 +107,12 @@ const NoteEditor = ({ setEditor }) => {
     editNote({ type: 'EDIT_NOTE', payload: editedNote });
   };
 
-  // Updates the note on every editor update
-  useEffect(() => {
-    onEditorUpdate();
-  }, [editorJSON]);
-
+  
   useEffect(() => {
     if (!activeNote) return;
-
+    
     if(!editor) { return; }
-
+    
     // Checking if the note is empty
     // if it is the editor content is set to ''
     // if it isn't the editor content is set to the selected note's content
@@ -127,12 +123,17 @@ const NoteEditor = ({ setEditor }) => {
     }
   }, [activeNote, editor]);
 
+  // Updates the note on every editor update
+  useEffect(() => {
+    onEditorUpdate();
+  }, [editorJSON]);
+  
   // Setting the current editor reference in the parent component
   // so that the editor commands can be used from its sibling
   useEffect(() => {
     setEditor(editor);
   }, [editor]);
-
+  
   return activeNote ? (
     <EditorContent editor={editor} className="text-editor" />
   ) : (

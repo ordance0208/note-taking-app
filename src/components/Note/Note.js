@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { useEffect } from 'react';
 import { NotesContext } from '../../App';
-import { ResponsiveContext } from '../AppContainer/AppContainer';
+import { ResponsiveContext } from '../AppContainer/Dashboard';
 import './Note.css';
 
 const Note = ({ note }) => {
   const { activeNote, setActiveNote } = useContext(NotesContext);
+  // Enables the editor view when the note is tapped on mobile.
   const { enableEditorView } = useContext(ResponsiveContext);
 
   const handleNoteClick = () => {
@@ -13,12 +13,7 @@ const Note = ({ note }) => {
     setActiveNote(note);    
   };
 
-  useEffect(() => {
-    if(activeNote) return;
-    setActiveNote(note);
-  }, []);
-
-  const calculateStyles = `note ${activeNote && note.id === activeNote.id ? 'selected' : ''}`;
+  const calculateStyles = `note ${note.id === activeNote.id ? 'selected' : ''}`;
 
   return (
     <div onClick={handleNoteClick} 

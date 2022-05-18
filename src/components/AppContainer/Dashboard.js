@@ -1,11 +1,11 @@
 import { createContext, useState } from 'react';
-import NoteContainer from '../NoteContainer/NoteContainer';
+import NotesContainer from '../NoteContainer/NotesContainer';
 import NoteEditorContainer from '../NoteEditorContainer/NoteEditorContainer';
-import './AppContainer.css';
+import './Dashboard.css';
 
 export const ResponsiveContext = createContext();
 
-const AppContainer = () => {
+const Dashboard = () => {
   // These are only used for mobile responsiveness
   const [noteContainerActive, setNoteContainerActive] = useState(true);
   const [editorContainerActive, setEditorContainerActive] = useState(false);
@@ -22,8 +22,8 @@ const AppContainer = () => {
 
   // Calculates the style (these styles are used only for mobile)
   const styles = noteContainerActive
-    ? 'app-container notes-active'
-    : 'app-container editor-active';
+    ? 'dashboard notes-active'
+    : 'dashboard editor-active';
 
   return (
     <ResponsiveContext.Provider
@@ -33,11 +33,11 @@ const AppContainer = () => {
       }}
     >
       <div className={styles}>
-        <NoteContainer />
+        <NotesContainer />
         <NoteEditorContainer />
       </div>
     </ResponsiveContext.Provider>
   );
 };
 
-export default AppContainer;
+export default Dashboard;

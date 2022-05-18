@@ -6,7 +6,7 @@ import './NotesList.css';
 const NotesList = ({ searchText }) => {
   const { notes } = useContext(NotesContext);
 
-  // Filters the note based on the search field then
+  // Filters the notes based on the search field then
   // maps the elements into the array for rendering
   const notesList = notes
     .filter(note => note.wordsToQuery.toLowerCase().includes(searchText.toLowerCase()))

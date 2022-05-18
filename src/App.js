@@ -1,7 +1,7 @@
 import { createContext, useReducer, useState, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import notesReducer from './reducers/notes';
-import AppContainer from './components/AppContainer/AppContainer';
+import AppContainer from './components/AppContainer/Dashboard';
 import { saveNotes, loadNotes } from './components/utils/localStorage';
 import MenuDrawer from './components/Drawer/MenuDrawer';
 import About from './pages/About/About';

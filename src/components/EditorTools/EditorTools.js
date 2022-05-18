@@ -3,7 +3,7 @@ import { RiHeading, RiBold, RiItalic, RiUnderline, RiImageAddFill } from 'react-
 import { VscTasklist } from 'react-icons/vsc';
 import { FiTrash2, FiChevronLeft } from 'react-icons/fi';
 import IconHolder from '../IconHolder/IconHolder';
-import { ResponsiveContext } from '../AppContainer/AppContainer';
+import { ResponsiveContext } from '../AppContainer/Dashboard';
 import { NotesContext } from '../../App';
 import './EditorTools.css';
 

@@ -1,9 +1,9 @@
 import { useState, createRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import './SearchBox.css';
+import './SearchField.css';
 
-const SearchBox = ({ setSearchText }) => {
+const SearchField = ({ setSearchText }) => {
   const [searchFieldText, setSearchFieldText] = useState('');
   // Used to show the clear icon (X) when the input field is not empty
   const [showClear, setShowClear] = useState(false);
@@ -31,7 +31,7 @@ const SearchBox = ({ setSearchText }) => {
     : 'icon clear-search-field';
 
   return (
-    <div className="search-box">
+    <div className="search-field-container">
       <FontAwesomeIcon icon={faSearch} className="search-icon" />
       <input
         type="text"
@@ -56,4 +56,4 @@ const SearchBox = ({ setSearchText }) => {
   );
 };
 
-export default SearchBox;
+export default SearchField;

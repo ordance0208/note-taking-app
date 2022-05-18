@@ -1,21 +1,21 @@
 import { useState } from 'react';
-import SearchBox from '../Search/SearchBox';
 import ContainerHeader from '../ContianerHeader/ContainerHeader';
+import SearchField from '../Search/SearchField';
 import NotesList from '../NotesList/NotesList';
-import './NoteContainer.css';
+import './NotesContainer.css';
 
-const NoteContainer = () => {
+const NotesContainer = () => {
   // Search text from the search field used to filter the notes by text
   const [searchText, setSearchText] = useState('');
 
   return (
     <div className='notes-container'>
       <ContainerHeader />
-      <SearchBox setSearchText={setSearchText}/>
+      <SearchField setSearchText={setSearchText}/>
       <NotesList searchText={searchText}/>
     </div>
-  )
+  );
 };
 
-export default NoteContainer;
+export default NotesContainer;
 
