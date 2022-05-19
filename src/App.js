@@ -5,6 +5,7 @@ import AppContainer from './components/AppContainer/Dashboard';
 import { saveNotes, loadNotes } from './components/utils/localStorage';
 import MenuDrawer from './components/Drawer/MenuDrawer';
 import About from './pages/About/About';
+import ThemeProvider from './contexts/ThemeProvider';
 import './App.css';
 
 export const NavbarContext = createContext();
@@ -40,17 +41,22 @@ function App() {
       }}
     >
       <NavbarContext.Provider value={{ menuDrawerOpened, setMenuDrawerOpened }}>
-        <div className="App">
-          <MenuDrawer
-            menuDrawerOpened={menuDrawerOpened}
-            setMenuDrawerOpened={setMenuDrawerOpened}
-          />
-          <Routes>
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
-            <Route path="/dashboard" element={<AppContainer />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </div>
+        <ThemeProvider>
+          <div className='App'>
+            <MenuDrawer
+              menuDrawerOpened={menuDrawerOpened}
+              setMenuDrawerOpened={setMenuDrawerOpened}
+            />
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route
+                path="/dashboard"
+                element={<AppContainer />}
+              />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </div>
+        </ThemeProvider>
       </NavbarContext.Provider>
     </NotesContext.Provider>
   );

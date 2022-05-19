@@ -1,12 +1,16 @@
 import { useState, createRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeProvider';
 import './SearchField.css';
 
 const SearchField = ({ setSearchText }) => {
   const [searchFieldText, setSearchFieldText] = useState('');
   // Used to show the clear icon (X) when the input field is not empty
   const [showClear, setShowClear] = useState(false);
+
+  const { darkTheme } = useContext(ThemeContext);
 
   const searchInput = createRef();
 
@@ -37,7 +41,7 @@ const SearchField = ({ setSearchText }) => {
         type="text"
         ref={searchInput}
         value={searchFieldText}
-        className="search-field"
+        className={`search-field${darkTheme ? ' dark-theme' : ''}`}
         placeholder="Search all notes..."
         onChange={(e) => {
           handleSearchChange(e);

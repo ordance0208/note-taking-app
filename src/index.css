@@ -1,3 +1,10 @@
+*:root {
+  --light-theme-background-color: #fafafa;
+  --light-theme-text-color: #333;
+  --dark-theme-background-color: #1d2327;
+  --dark-theme-text-color: #227093;
+}
+
 * {
   margin: 0;
   padding: 0;

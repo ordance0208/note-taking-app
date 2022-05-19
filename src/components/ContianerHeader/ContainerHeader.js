@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RiMenuLine, RiEditBoxLine } from 'react-icons/ri';
+import { RiMenuLine, RiEditBoxLine, RiCloseLine } from 'react-icons/ri';
 import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
 import IconHolder from '../IconHolder/IconHolder';
@@ -19,7 +19,7 @@ const ContainerHeader = () => {
       <IconHolder
           tooltip={menuDrawerOpened ? 'Close Menu' : 'Menu'}
           onClick={toggleDrawer}
-          reactIcon={<RiMenuLine />}
+          reactIcon={menuDrawerOpened ? <RiCloseLine /> : <RiMenuLine />}
         />
       <h3>Noteify</h3>
       <IconHolder

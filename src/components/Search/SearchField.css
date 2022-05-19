@@ -15,6 +15,11 @@
   background: transparent;
 }
 
+.search-field-container .search-field.dark-theme,
+.search-field-container .search-field.dark-theme::placeholder {
+  color: var(--dark-theme-text-color);
+}
+
 .search-field-container .search-icon {
   font-size: 1.2rem;
   margin-right: 0.5rem;

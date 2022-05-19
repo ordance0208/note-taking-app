@@ -1,7 +1,12 @@
+.menu-drawer.dark-theme {
+  background-color: var(--dark-theme-background-color);
+  color: var(--dark-theme-text-color);
+}
+
 .menu-drawer {
   height: 100%;
   width: 300px;
-  background-color: white;
+  background-color: var(--light-theme-background-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,6 +15,7 @@
   border-right: 1px solid gray;
   z-index: 10;
 }
+
 
 .menu-drawer.active {
   transform: translateX(0%);
@@ -21,10 +27,14 @@
 }
 
 .menu-drawer .navigation ul li a {
-  color: #333;
+  color: var(--light-theme-text-color);
   text-decoration: none;
   text-transform: uppercase;
   display: block;
+}
+
+.menu-drawer.dark-theme ul li a {
+  color: var(--dark-theme-text-color);
 }
 
 .menu-drawer .navigation ul li {

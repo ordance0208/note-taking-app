@@ -13,7 +13,7 @@ const Note = ({ note }) => {
     setActiveNote(note);    
   };
 
-  const calculateStyles = `note ${note.id === activeNote.id ? 'selected' : ''}`;
+  const calculateStyles = `note ${activeNote && note.id === activeNote.id ? 'selected' : ''}`;
 
   return (
     <div onClick={handleNoteClick} 
