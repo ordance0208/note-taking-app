@@ -9,7 +9,7 @@ const About = () => {
       <ContainerHeader /> 
       <Container>
         <TextGroup heading='About This Project'>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum natus eum animi, at facilis minus tenetur quam dignissimos in voluptas.</p>
+          <p>A simple note taking application with a text editor that enables text formatting and inserting images. This is a project that I did for my web development portfolio. The project utilizes the TipTap text editor, for more info see the link below.</p>
         </TextGroup>
         <TextGroup heading='About Me'>
           <p>I am Ordan Gramatov, a guy with passion for web development. I am an entry level front end developer constantly expanding my knowledge on the web development field and looking forward into getting an intership.</p>
