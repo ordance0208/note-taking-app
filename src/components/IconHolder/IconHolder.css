@@ -2,6 +2,7 @@
   position: relative;
   z-index: 200;
   height: auto; 
+  display: flex;
 }
 
 .icon-holder svg {
@@ -9,8 +10,16 @@
   font-size: 1.5rem;
 }
 
-.icon-holder:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-  transform: scale(1) translateX(-50%);
+
+@media screen and (min-width:769px){
+  .icon-holder:hover .tooltip {
+    opacity: 1;
+    transform: scale(1) translateX(-50%);
+  }
+  
+  .icon-holder .tooltip:hover {
+    opacity: 0;
+    transform: scale(0.9) translateX(-50%);
+  }
 }
+
