@@ -123,6 +123,8 @@ const EditorTools = ({ editor }) => {
               });
 
               fileReader.readAsDataURL(e.target.files[0]);
+
+              e.target.value = [];
             }}
             accept="image/*"
             id="image-upload"

@@ -29,6 +29,12 @@
   align-items: center;
 }
 
+img {
+  width: 500px;
+  height: auto;
+  display: block;
+}
+
 ul[data-type='taskList'] {
   list-style: none;
   padding: 0;

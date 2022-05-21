@@ -40,8 +40,6 @@ const NoteEditor = ({ setEditor }) => {
     let displayTitleAdded = false;
     let wordsToQuery = [];
 
-    console.log(editorJSON);
-
     // Adding all the words to the note so it can later be used for querying
     // as well as adding the note title and (a snippet of) the body that will be
     // shown on each note when listed in the notes list component
