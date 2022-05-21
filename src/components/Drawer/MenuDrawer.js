@@ -13,7 +13,9 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
 
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
 
-  const calculateStyles = `menu-drawer ${menuDrawerOpened ? 'active' : ''} ${darkTheme ? 'dark-theme' : ''}`;
+  const calculateStyles = `menu-drawer ${menuDrawerOpened ? 'active' : ''} ${
+    darkTheme ? 'dark-theme' : ''
+  }`;
 
   return (
     <>
@@ -22,21 +24,24 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
           <ul>
             <li>
               <Link onClick={handleDrawerClose} to="/dashboard">
-              <FaStickyNote /> Dashboard
+                <FaStickyNote />&nbsp;Dashboard
               </Link>
             </li>
             <li>
               <Link onClick={handleDrawerClose} to="/about">
-                <RiQuestionFill/> About
+                <RiQuestionFill />&nbsp;About
               </Link>
             </li>
             <li>
-              <span>Dark Mode</span> <ToggleButton darkTheme={darkTheme} action={setDarkTheme}/>
+              <span>Dark Mode</span>{' '}
+              <ToggleButton darkTheme={darkTheme} action={setDarkTheme} />
             </li>
           </ul>
         </nav>
       </div>
-      {menuDrawerOpened && <div onClick={handleDrawerClose} className="navbar-overlay"></div>}
+      {menuDrawerOpened && (
+        <div onClick={handleDrawerClose} className="navbar-overlay"></div>
+      )}
     </>
   );
 };

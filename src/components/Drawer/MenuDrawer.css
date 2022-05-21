@@ -16,21 +16,23 @@
   z-index: 10;
 }
 
-
 .menu-drawer.active {
   transform: translateX(0%);
 }
 
 .menu-drawer .navigation {
   border-top: 1px solid gray;
-  margin-top: 2.95rem;
+  margin-top: 2.75rem;
 }
 
 .menu-drawer .navigation ul li a {
   color: var(--light-theme-text-color);
   text-decoration: none;
   text-transform: uppercase;
-  display: block;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .menu-drawer.dark-theme ul li a {
