@@ -7,10 +7,11 @@
   transform: translateX(-50%) scale(0.9);
   border-radius: 10px;
   opacity: 0;
+  visibility: hidden;
   color: #fafafa;
   font-size: 1rem;
   white-space: nowrap;
-  z-index: 123;
+  z-index: 9;
   transition: all 150ms ease;
   user-select: none;
 }
