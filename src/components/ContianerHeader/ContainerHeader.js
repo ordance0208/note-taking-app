@@ -29,7 +29,7 @@ const ContainerHeader = () => {
             noteContent: {},
             displayTitle: '',
             dispayBody: '',
-            wordsToQuery: '',
+            wordsToQuery: [],
             id: uuidv4(),
             createdAt: moment(),
             selected: true

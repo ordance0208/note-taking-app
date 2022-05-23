@@ -18,8 +18,8 @@ const Note = ({ note }) => {
   return (
     <div onClick={handleNoteClick} 
       className={calculateStyles}>
-      <h3 className='note-display-title'>{note.displayTitle || 'New Note'}</h3>
-      <p className={note.displayBody ? 'note-display-body' : 'note-display-body hide'}>{note.displayBody || 'A'}</p>
+      <h3 className='note-display-title'>{note.wordsToQuery[0] || 'New Note'}</h3>
+      <p className={note.wordsToQuery[1] ? 'note-display-body' : 'note-display-body hide'}>{note.wordsToQuery[1] || 'A'}</p>
       <p className='note-created-date'>{note.createdAt.format('DD/MM/YYYY')}</p>
     </div>
   );

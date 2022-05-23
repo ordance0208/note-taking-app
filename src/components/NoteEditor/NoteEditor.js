@@ -40,6 +40,8 @@ const NoteEditor = ({ setEditor }) => {
     let displayTitleAdded = false;
     let wordsToQuery = [];
 
+    console.log(editorJSON);
+
     // Adding all the words to the note so it can later be used for querying
     // as well as adding the note title and (a snippet of) the body that will be
     // shown on each note when listed in the notes list component
@@ -52,14 +54,46 @@ const NoteEditor = ({ setEditor }) => {
           // because it has different properties than a regular one
           if (
             // Checking if the task item has text
-            editorJSON.content[i].content.length > 0 &&
-            editorJSON.content[i].content[0].content[0].content
+            editorJSON.content[i].content.length > 0
+            // &&
+            // editorJSON.content[i].content[0].content[0].content
           ) {
             for (let j = 0; j < editorJSON.content[i].content.length; j++) {
-              if (editorJSON.content[i].content[j].content[0].content) {
-                lineOfText =
-                  editorJSON.content[i].content[j].content[0].content[0].text;
-                wordsToQuery.push(lineOfText);
+              lineOfText = '';
+              for (
+                let k = 0;
+                k < editorJSON.content[i].content[j].content.length;
+                k++
+              ) {
+                if (editorJSON.content[i].content[j].content[k].content) {
+                  if (
+                    editorJSON.content[i].content[j].content[k].content.length >
+                    1
+                  ) {
+                    for (
+                      let l = 0;
+                      l <
+                      editorJSON.content[i].content[j].content[k].content
+                        .length;
+                      l++
+                    ) {
+                      if (
+                        editorJSON.content[i].content[j].content[k].content[l]
+                          .text
+                      ) {
+                        lineOfText +=
+                          editorJSON.content[i].content[j].content[k].content[l]
+                            .text;                        
+                      }
+                    }
+                    wordsToQuery.push(lineOfText);
+                  } else {
+                    lineOfText =
+                      editorJSON.content[i].content[j].content[k].content[0]
+                        .text;
+                    wordsToQuery.push(lineOfText);
+                  }
+                }
               }
             }
           }
@@ -75,17 +109,11 @@ const NoteEditor = ({ setEditor }) => {
           }
         }
       }
-
-      if (!displayTitleAdded) {
-        displayTitle = lineOfText;
-        displayTitleAdded = true;
-      } else {
-        displayBody = displayBody === '' ? lineOfText : displayBody;
-      }
     }
 
     // Query words converted into a string for easier searching
-    wordsToQuery = wordsToQuery.join(' ');
+    // wordsToQuery = wordsToQuery.join(' ');
+    wordsToQuery = wordsToQuery.filter(word => word.trim().length !== 0);
 
     // The active note with its changes is getting dispatched to the reducer
     const editedNote = {
@@ -98,12 +126,13 @@ const NoteEditor = ({ setEditor }) => {
     editNote({ type: 'EDIT_NOTE', payload: editedNote });
   };
 
-  
   useEffect(() => {
     if (!activeNote) return;
-    
-    if(!editor) { return; }
-    
+
+    if (!editor) {
+      return;
+    }
+
     // Checking if the note is empty
     // if it is the editor content is set to ''
     // if it isn't the editor content is set to the selected note's content
@@ -118,13 +147,13 @@ const NoteEditor = ({ setEditor }) => {
   useEffect(() => {
     onEditorUpdate();
   }, [editorJSON]);
-  
+
   // Setting the current editor reference in the parent component
   // so that the editor commands can be used from its sibling
   useEffect(() => {
     setEditor(editor);
   }, [editor]);
-  
+
   return activeNote ? (
     <EditorContent editor={editor} className="text-editor" />
   ) : (

@@ -9,7 +9,7 @@ const NotesList = ({ searchText }) => {
   // Filters the notes based on the search field then
   // maps the elements into the array for rendering
   const notesList = notes
-    .filter(note => note.wordsToQuery.toLowerCase().includes(searchText.toLowerCase()))
+    .filter((note, index) => note.wordsToQuery.join(' ').toLowerCase().includes(searchText.toLowerCase()))
     .map(note => <Note note={note} key={note.id} /> );
 
   const calculateStyles = notes.length === 0 ? 'note-list' : 'note-list active';
