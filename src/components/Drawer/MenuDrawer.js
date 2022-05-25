@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RiQuestionFill } from 'react-icons/ri';
 import { FaStickyNote } from 'react-icons/fa';
 import ToggleButton from '../ToggleButton/ToggleButton';
@@ -17,20 +17,38 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
     darkTheme ? 'dark-theme' : ''
   }`;
 
+  const calculateLinkStyles = ({ isActive }) => {
+    if (isActive && darkTheme) {
+      return 'active-dark';
+    } else if (isActive && !darkTheme) {
+      return 'active-light';
+    }
+  };
+
   return (
     <>
       <div className={calculateStyles}>
         <nav className="navigation">
           <ul>
             <li>
-              <Link activeClassName onClick={handleDrawerClose} to="/dashboard">
-                <FaStickyNote />&nbsp;Dashboard
-              </Link>
+              <NavLink
+                className={calculateLinkStyles}
+                onClick={handleDrawerClose}
+                to="/dashboard"
+              >
+                <FaStickyNote />
+                &nbsp;Dashboard
+              </NavLink>
             </li>
             <li>
-              <Link onClick={handleDrawerClose} to="/about">
-                <RiQuestionFill />&nbsp;About
-              </Link>
+              <NavLink
+                className={calculateLinkStyles}
+                onClick={handleDrawerClose}
+                to="/about"
+              >
+                <RiQuestionFill />
+                &nbsp;About
+              </NavLink>
             </li>
             <li>
               <span>Dark Mode</span>

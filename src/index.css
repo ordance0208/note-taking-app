@@ -1,10 +1,10 @@
 *:root {
   --light-theme-background-color: #fafafa;
   --light-theme-text-color: #333;
-  --light-theme-active-link-color: #333;
+  --light-theme-active-color: #cbcbcb;
   --dark-theme-background-color: #1d2327;
   --dark-theme-text-color: #227093;
-  --dark-theme-active-link-color: #333;
+  --dark-theme-active-color: #343434;
 }
 
 * {

@@ -36,6 +36,14 @@
   font-size: 1.1rem;
 }
 
+.menu-drawer .navigation ul li a.active-dark {
+  background: var(--dark-theme-active-color);
+}
+
+.menu-drawer .navigation ul li a.active-light {
+  background: var(--light-theme-active-color);
+}
+
 .menu-drawer.dark-theme ul li a {
   color: var(--dark-theme-text-color);
 }
@@ -48,7 +56,7 @@
 
 .menu-drawer .navigation ul li a,
 .menu-drawer .navigation ul li span {
-  margin-left: 1rem;
+  padding-left: 1rem;
   font-size: 1.1rem;
 }
 
