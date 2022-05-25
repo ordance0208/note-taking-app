@@ -5,8 +5,9 @@ import AppContainer from './components/AppContainer/Dashboard';
 import { saveNotes, loadNotes } from './components/utils/localStorage';
 import MenuDrawer from './components/Drawer/MenuDrawer';
 import About from './pages/About/About';
-import ThemeProvider from './contexts/ThemeProvider';
+import ThemeProvider, { ThemeContext } from './contexts/ThemeProvider';
 import './App.css';
+import PageTitle from './components/PageTitle/PageTitle';
 
 export const NavbarContext = createContext();
 export const NotesContext = createContext();
@@ -43,6 +44,7 @@ function App() {
       <NavbarContext.Provider value={{ menuDrawerOpened, setMenuDrawerOpened }}>
         <ThemeProvider>
           <div className='App'>
+            <PageTitle />
             <MenuDrawer
               menuDrawerOpened={menuDrawerOpened}
               setMenuDrawerOpened={setMenuDrawerOpened}
