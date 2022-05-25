@@ -23,7 +23,7 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
         <nav className="navigation">
           <ul>
             <li>
-              <Link onClick={handleDrawerClose} to="/dashboard">
+              <Link activeClassName onClick={handleDrawerClose} to="/dashboard">
                 <FaStickyNote />&nbsp;Dashboard
               </Link>
             </li>
@@ -33,7 +33,7 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
               </Link>
             </li>
             <li>
-              <span>Dark Mode</span>{' '}
+              <span>Dark Mode</span>
               <ToggleButton darkTheme={darkTheme} action={setDarkTheme} />
             </li>
           </ul>

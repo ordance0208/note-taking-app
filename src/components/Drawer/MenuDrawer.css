@@ -13,7 +13,7 @@
   transform: translateX(-100%);
   transition: transform 250ms ease;
   border-right: 1px solid gray;
-  z-index: 10;
+  z-index: 100;
 }
 
 .menu-drawer.active {
@@ -22,7 +22,7 @@
 
 .menu-drawer .navigation {
   border-top: 1px solid gray;
-  margin-top: 2.75rem;
+  margin-top: calc(2.75rem - 1px);
 }
 
 .menu-drawer .navigation ul li a {
@@ -33,6 +33,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  font-size: 1.1rem;
 }
 
 .menu-drawer.dark-theme ul li a {
@@ -41,14 +42,14 @@
 
 .menu-drawer .navigation ul li {
   border-bottom: 1px solid gray;
-  height: 2.5rem;
-  display: flex;
+  height: 3rem;
   align-items: center;
 }
 
 .menu-drawer .navigation ul li a,
 .menu-drawer .navigation ul li span {
   margin-left: 1rem;
+  font-size: 1.1rem;
 }
 
 .menu-drawer .navigation ul li span {
