@@ -22,6 +22,10 @@
   cursor: pointer;
 }
 
-.note.selected {
-  background: rgb(19, 0, 139);
+body[data-theme='dark-theme'] .note.selected {
+  background: var(--dark-theme-active-color);
+}
+
+body[data-theme='light-theme'] .note.selected {
+  background: var(--light-theme-active-color);
 }

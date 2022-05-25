@@ -18,6 +18,7 @@ const ThemeProvider = ({ children }) => {
 
   document.body.style.color = textColor;
   document.body.style.background = backgroundColor;
+  document.body.dataset.theme = darkTheme ? 'dark-theme' : 'light-theme'
 
   useEffect(() => {
     saveTheme(darkTheme);

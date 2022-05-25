@@ -1,8 +1,8 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useContext } from 'react/';
+import { NavLink } from 'react-router-dom';
 import { RiQuestionFill } from 'react-icons/ri';
 import { FaStickyNote } from 'react-icons/fa';
 import ToggleButton from '../ToggleButton/ToggleButton';
-import { useContext } from 'react/';
 import { ThemeContext } from '../../contexts/ThemeProvider';
 import './MenuDrawer.css';
 
@@ -13,17 +13,8 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
 
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
 
-  const calculateStyles = `menu-drawer ${menuDrawerOpened ? 'active' : ''} ${
-    darkTheme ? 'dark-theme' : ''
-  }`;
-
-  const calculateLinkStyles = ({ isActive }) => {
-    if (isActive && darkTheme) {
-      return 'active-dark';
-    } else if (isActive && !darkTheme) {
-      return 'active-light';
-    }
-  };
+  const calculateStyles = `menu-drawer ${menuDrawerOpened ? 'active' : ''}`;
+  const calculateLinkStyles = ({ isActive }) => (isActive ? 'link-active' : '');
 
   return (
     <>

@@ -1,8 +1,3 @@
-.menu-drawer.dark-theme {
-  background-color: var(--dark-theme-background-color);
-  color: var(--dark-theme-text-color);
-}
-
 .menu-drawer {
   height: 100%;
   width: 300px;
@@ -14,6 +9,11 @@
   transition: transform 250ms ease;
   border-right: 1px solid gray;
   z-index: 100;
+}
+
+body[data-theme='dark-theme'] .menu-drawer {
+  background-color: var(--dark-theme-background-color);
+  color: var(--dark-theme-text-color);
 }
 
 .menu-drawer.active {
@@ -36,15 +36,15 @@
   font-size: 1.1rem;
 }
 
-.menu-drawer .navigation ul li a.active-dark {
+body[data-theme='dark-theme'] .menu-drawer .navigation ul li a.link-active {
   background: var(--dark-theme-active-color);
 }
 
-.menu-drawer .navigation ul li a.active-light {
+body[data-theme='light-theme'] .menu-drawer .navigation ul li a.link-active {
   background: var(--light-theme-active-color);
 }
 
-.menu-drawer.dark-theme ul li a {
+body[data-theme='dark-theme'] .menu-drawer ul li a {
   color: var(--dark-theme-text-color);
 }
 

@@ -20,6 +20,10 @@
   position: relative;
 }
 
+.editor-tools:last-child {
+  justify-self: end;
+}
+
 .editor-tools .icon-holder:nth-child(6) label {
   position: absolute;
   width: 100%;
