@@ -24,3 +24,9 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .icon-holder svg {
+    font-size: 1.2rem;
+  }
+}
+

@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  min-height: 2.75rem;
   border-bottom: 1px solid gray;
 }
 
@@ -30,6 +31,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .editor-tools {
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
   .editor-tools .icon-holder:first-child {
     display: block;
   }
