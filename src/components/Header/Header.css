@@ -1,4 +1,4 @@
-.container-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8,12 +8,12 @@
   border-bottom: 1px solid gray;
 }
 
-.container-header .icon-holder:first-child .tooltip {
+.header .icon-holder:first-child .tooltip {
   margin-left: 1.3rem;
 }
 
 @media screen and (max-width: 768px) {
-  .container-header .icon-holder:last-child .tooltip {
+  .header .icon-holder:last-child .tooltip {
     margin-left: -2.3rem;
   } 
 }

@@ -8,7 +8,7 @@ const ToggleButton = ({ darkTheme, action }) => {
 
   return (
     <div className='toggle-wrapper' style={{display: 'flex'}}>
-      <Toggle defaultChecked={darkTheme} checked={darkTheme} onChange={handleToggleChange} aria-label='Dark mode toggle' icons={false}/>
+      <Toggle checked={darkTheme} onChange={handleToggleChange} aria-label='Dark mode toggle' icons={false}/>
     </div>
   )
 }

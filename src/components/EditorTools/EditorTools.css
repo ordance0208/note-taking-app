@@ -5,6 +5,12 @@
   padding: 0 0.5rem;
   min-height: 2.75rem;
   border-bottom: 1px solid gray;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.editor-tools::-webkit-scrollbar {
+  display: none;
 }
 
 .editor-tools .icon-holder:first-child {
@@ -43,13 +49,5 @@
 
   .editor-tools .icon-holder:first-child {
     display: block;
-  }
-
-  .editor-tools .icon-holder:nth-child(2) .tooltip {
-    margin-left: 1.3rem;
-  }
-
-  .editor-tools .icon-holder:first-child .tooltip {
-    margin-left: 4.3rem;
   }
 }

@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import { RiMenuLine, RiEditBoxLine, RiCloseLine } from 'react-icons/ri';
-import { v4 as uuidv4 } from 'uuid';
 import moment from 'moment';
-import IconHolder from '../IconHolder/IconHolder';
+import { v4 as uuidv4 } from 'uuid';
+import { RiMenuLine, RiEditBoxLine, RiCloseLine } from 'react-icons/ri';
 import { NotesContext } from '../../contexts/NotesProvider';
 import { NavbarContext } from '../../contexts/NavbarProvider';
-import './ContainerHeader.css';
+import IconHolder from '../IconHolder/IconHolder';
+import './Header.css';
 
-const ContainerHeader = () => {
+const Header = () => {
   const { dispatchNotes: addNote, setActiveNote } = useContext(NotesContext);
   const { navbarActive, setNavbarActive } = useContext(NavbarContext);
 
@@ -16,15 +16,16 @@ const ContainerHeader = () => {
   };
 
   return (
-    <div className="container-header">
+    <header className="header">
       <IconHolder
+        icon={navbarActive ? <RiCloseLine /> : <RiMenuLine />}
         tooltip={navbarActive ? 'Close Menu' : 'Menu'}
         onClick={toggleDrawer}
-        reactIcon={navbarActive ? <RiCloseLine /> : <RiMenuLine />}
       />
       <h3>Noteify</h3>
       <div style={{'visibility' : `${document.title.toLowerCase().includes('dashboard') ? 'visible' : 'hidden'}`}}>
         <IconHolder
+          icon={<RiEditBoxLine />}
           tooltip="New Note"
           onClick={() => {
             const note = {
@@ -40,11 +41,10 @@ const ContainerHeader = () => {
             addNote({ type: 'ADD_NOTE', payload: note });
             setActiveNote(note);
           }}
-          reactIcon={<RiEditBoxLine />}
         />
       </div>
-    </div>
+    </header>
   );
 };
 
-export default ContainerHeader;
+export default Header;

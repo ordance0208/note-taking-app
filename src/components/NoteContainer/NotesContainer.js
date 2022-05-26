@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ContainerHeader from '../ContianerHeader/ContainerHeader';
+import Header from '../Header/Header';
 import SearchField from '../Search/SearchField';
 import NotesList from '../NotesList/NotesList';
 import './NotesContainer.css';
@@ -10,7 +10,7 @@ const NotesContainer = () => {
 
   return (
     <div className='notes-container'>
-      <ContainerHeader />
+      <Header />
       <SearchField setSearchText={setSearchText}/>
       <NotesList searchText={searchText}/>
     </div>

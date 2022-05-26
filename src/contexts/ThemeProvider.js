@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext } from "react";
-import { loadTheme, saveTheme } from "../components/utils/localStorage";
+import { loadTheme, saveTheme } from "../utils/localStorage";
 
 export const ThemeContext = createContext();
 

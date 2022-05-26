@@ -1,13 +1,13 @@
 import { useContext } from 'react/';
 import { NavLink } from 'react-router-dom';
-import { RiQuestionFill } from 'react-icons/ri';
-import { FaStickyNote } from 'react-icons/fa';
-import ToggleButton from '../ToggleButton/ToggleButton';
 import { ThemeContext } from '../../contexts/ThemeProvider';
-import './MenuDrawer.css';
 import { NavbarContext } from '../../contexts/NavbarProvider';
+import { RiQuestionFill } from 'react-icons/ri';
+import { MdDashboard } from 'react-icons/md';
+import ToggleButton from '../ToggleButton/ToggleButton';
+import './Navbar.css';
 
-const MenuDrawer = () => {
+const Navbar = () => {
   const { navbarActive, setNavbarActive } = useContext(NavbarContext);
 
   const handleDrawerClose = () => {
@@ -30,7 +30,7 @@ const MenuDrawer = () => {
                 onClick={handleDrawerClose}
                 to="/dashboard"
               >
-                <FaStickyNote />
+                <MdDashboard />
                 &nbsp;Dashboard
               </NavLink>
             </li>
@@ -58,4 +58,4 @@ const MenuDrawer = () => {
   );
 };
 
-export default MenuDrawer;
+export default Navbar;

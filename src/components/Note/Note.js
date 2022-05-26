@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { NotesContext } from '../../contexts/NotesProvider';
-import { ResponsiveContext } from '../AppContainer/Dashboard';
+import { ResponsiveContext } from '../../contexts/ResponsiveProvider';
 import './Note.css';
 
 const Note = ({ note }) => {

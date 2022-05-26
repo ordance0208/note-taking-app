@@ -6,7 +6,6 @@ import './NotesList.css';
 const NotesList = ({ searchText }) => {
   const { notes } = useContext(NotesContext);
 
-  console.log(notes);
   // Filters the notes based on the search field then
   // maps the elements into the array for rendering
   const notesList = notes

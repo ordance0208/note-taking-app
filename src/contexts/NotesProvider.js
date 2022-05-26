@@ -1,6 +1,6 @@
 import { createContext, useReducer, useState, useEffect } from "react";
 import notesReducer from "../reducers/notes";
-import { loadNotes, saveNotes } from "../components/utils/localStorage";
+import { loadNotes, saveNotes } from "../utils/localStorage";
 
 export const NotesContext = createContext();
 

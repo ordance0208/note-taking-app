@@ -1,11 +1,11 @@
 import Tooltip from '../Tooltip/Tooltip';
 import './IconHolder.css';
 
-const IconHolder = ({ icon, tooltip, onClick, reactIcon }) => {
+const IconHolder = ({ icon, tooltip, onClick }) => {
   return (
     <div className='icon-holder' onClick={onClick}>
       <Tooltip text={tooltip}/>
-      {reactIcon}
+      {icon}
     </div>
   )
 };

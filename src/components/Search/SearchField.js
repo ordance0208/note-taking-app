@@ -1,7 +1,7 @@
-import { useState, createRef, useEffect } from 'react';
+import { useState, createRef, useEffect, useContext } from 'react';
+import { RiSearchLine, RiCloseLine } from 'react-icons/ri';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/ThemeProvider';
 import './SearchField.css';
 
@@ -36,7 +36,7 @@ const SearchField = ({ setSearchText }) => {
 
   return (
     <div className="search-field-container">
-      <FontAwesomeIcon icon={faSearch} className="search-icon" />
+      <RiSearchLine className="search-icon" />
       <input
         type="text"
         ref={searchInput}
@@ -47,7 +47,7 @@ const SearchField = ({ setSearchText }) => {
           handleSearchChange(e);
         }}
       />
-      <FontAwesomeIcon
+      <RiCloseLine
         icon={faTimes}
         className={calculateClearIconStyles}
         onClick={() => {

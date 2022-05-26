@@ -37,15 +37,12 @@ const NoteEditor = ({ setEditor }) => {
     let lineOfText = '';
     let displayTitle = '';
     let displayBody = '';
-    let displayTitleAdded = false;
     let wordsToQuery = [];
-
-    console.log(editorJSON);
 
     // Adding all the words to the note so it can later be used for querying
     // as well as adding the note title and (a snippet of) the body that will be
     // shown on each note when listed in the notes list component
-    // Heavily nested code because of the editor output structure
+    // HEAVELY NESTED CODE BECAUSE OF THE EDITOR OUTPUT STRUCTURE
     for (let i = 0; i < editorJSON.content.length; i++) {
       lineOfText = '';
       if (editorJSON.content[i].content) {
@@ -55,8 +52,6 @@ const NoteEditor = ({ setEditor }) => {
           if (
             // Checking if the task item has text
             editorJSON.content[i].content.length > 0
-            // &&
-            // editorJSON.content[i].content[0].content[0].content
           ) {
             for (let j = 0; j < editorJSON.content[i].content.length; j++) {
               lineOfText = '';
@@ -66,6 +61,8 @@ const NoteEditor = ({ setEditor }) => {
                 k++
               ) {
                 if (editorJSON.content[i].content[j].content[k].content) {
+                  // If a part of the line is formatted it will be added as a new array item
+                  // and by doing this we are concatinating it to be one string
                   if (
                     editorJSON.content[i].content[j].content[k].content.length >
                     1

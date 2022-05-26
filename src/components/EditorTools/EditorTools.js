@@ -1,9 +1,15 @@
 import { useContext, useRef } from 'react';
-import { RiHeading, RiBold, RiItalic, RiUnderline, RiImageAddFill } from 'react-icons/ri';
+import {
+  RiHeading,
+  RiBold,
+  RiItalic,
+  RiUnderline,
+  RiImageAddFill,
+} from 'react-icons/ri';
 import { VscTasklist } from 'react-icons/vsc';
 import { FiTrash2, FiChevronLeft } from 'react-icons/fi';
 import IconHolder from '../IconHolder/IconHolder';
-import { ResponsiveContext } from '../AppContainer/Dashboard';
+import { ResponsiveContext } from '../../contexts/ResponsiveProvider';
 import { NotesContext } from '../../contexts/NotesProvider';
 import './EditorTools.css';
 
@@ -71,45 +77,39 @@ const EditorTools = ({ editor }) => {
       {activeNote && (
         <div className="editor-tools">
           <IconHolder
+            icon={<FiChevronLeft />}
             tooltip="Go To Notes List"
             onClick={enableNotesContainerView}
-            reactIcon={<FiChevronLeft />}
           />
           <IconHolder
-            // icon={faHeading}
+            icon={<RiHeading />}
             tooltip="Toggle Heading"
             onClick={() => handleEditorCommand('heading', 1)}
-            reactIcon={<RiHeading />}
           />
           <IconHolder
-            // icon={faBold}
+            icon={<RiBold />}
             tooltip="Toggle Bold"
             onClick={() => handleEditorCommand('bold', undefined)}
-            reactIcon={<RiBold />}
           />
           <IconHolder
-            // icon={faItalic}
+            icon={<RiItalic />}
             tooltip="Toggle Italic"
             onClick={() => handleEditorCommand('italic', undefined)}
-            reactIcon={<RiItalic />}
           />
           <IconHolder
-            // icon={faUnderline}
+            icon={<RiUnderline />}
             tooltip="Toggle Underline"
             onClick={() => handleEditorCommand('underline', undefined)}
-            reactIcon={<RiUnderline />}
           />
           <IconHolder
-            // icon={faTasks}
+            icon={<VscTasklist />}
             tooltip="Toggle Task List"
             onClick={() => handleEditorCommand('tasklist', undefined)}
-            reactIcon={<VscTasklist />}
           />
           <IconHolder
-            // icon={faImage}
+            icon={<RiImageAddFill />}
             tooltip="Add Image"
             onClick={() => imageUpload.current.click()}
-            reactIcon={<RiImageAddFill />}
           />
           <input
             ref={imageUpload}
@@ -130,10 +130,9 @@ const EditorTools = ({ editor }) => {
             id="image-upload"
           />
           <IconHolder
-            // icon={faTrashAlt}
+            icon={<FiTrash2 />}
             tooltip="Delete Note"
             onClick={handleNoteDelete}
-            reactIcon={<FiTrash2 />}
           />
         </div>
       )}
