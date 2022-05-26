@@ -10,9 +10,9 @@ const saveTheme = (darkThemeActive) => {
   localStorage.setItem('dark-mode-active', darkThemeActive);
 };
 
-const loadTheme = () => {
+const loadTheme = (setDarkTheme) => {
   let savedTheme = JSON.parse(localStorage.getItem('dark-mode-active'));
-  return savedTheme === null ? true : savedTheme;
+  setDarkTheme(savedTheme === null ? true : savedTheme);
 }
 
 // Loads the notes from local storage (if any) 
@@ -22,7 +22,7 @@ const loadNotes = (dispatchNotes, setActiveNote) => {
 
   if(!savedNotes || savedNotes.length === 0) {
     setActiveNote(null);
-    dispatchNotes([]);
+    dispatchNotes({ type: 'LOAD_NOTES', payload: [] });
     return;
   }
  
