@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Header from '../Header/Header';
-import SearchField from '../Search/SearchField';
+import SearchField from '../SearchField/SearchField';
 import NotesList from '../NotesList/NotesList';
 import './NotesContainer.css';
 
