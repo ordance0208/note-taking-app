@@ -4,7 +4,7 @@ import { VscTasklist } from 'react-icons/vsc';
 import { FiTrash2, FiChevronLeft } from 'react-icons/fi';
 import IconHolder from '../IconHolder/IconHolder';
 import { ResponsiveContext } from '../AppContainer/Dashboard';
-import { NotesContext } from '../../App';
+import { NotesContext } from '../../contexts/NotesProvider';
 import './EditorTools.css';
 
 const EditorTools = ({ editor }) => {

@@ -4,7 +4,7 @@ import { loadTheme, saveTheme } from "../components/utils/localStorage";
 export const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-  const [darkTheme, setDarkTheme] = useState(loadTheme);
+  const [darkTheme, setDarkTheme] = useState(null);
 
   const styles = getComputedStyle(document.body);
 
@@ -23,6 +23,15 @@ const ThemeProvider = ({ children }) => {
   useEffect(() => {
     saveTheme(darkTheme);
   }, [darkTheme]);
+
+  useState(()=> {
+    loadTheme(setDarkTheme);
+
+    window.addEventListener('storage', (e) => {
+      if(e.key === 'dark-mode-active')
+      loadTheme(setDarkTheme);
+    });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ darkTheme, setDarkTheme }}>

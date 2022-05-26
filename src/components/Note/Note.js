@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { NotesContext } from '../../App';
+import { NotesContext } from '../../contexts/NotesProvider';
 import { ResponsiveContext } from '../AppContainer/Dashboard';
 import './Note.css';
 
@@ -13,7 +13,7 @@ const Note = ({ note }) => {
     setActiveNote(note);    
   };
 
-  const calculateStyles = `note ${activeNote && note.id === activeNote.id ? 'selected' : ''}`;
+  const calculateStyles = `note ${activeNote && note.id === activeNote.id ? 'active' : ''}`;
 
   return (
     <div onClick={handleNoteClick} 

@@ -5,15 +5,18 @@ import { FaStickyNote } from 'react-icons/fa';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { ThemeContext } from '../../contexts/ThemeProvider';
 import './MenuDrawer.css';
+import { NavbarContext } from '../../contexts/NavbarProvider';
 
-const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
+const MenuDrawer = () => {
+  const { navbarActive, setNavbarActive } = useContext(NavbarContext);
+
   const handleDrawerClose = () => {
-    setMenuDrawerOpened(false);
+    setNavbarActive(false);
   };
 
   const { darkTheme, setDarkTheme } = useContext(ThemeContext);
 
-  const calculateStyles = `menu-drawer ${menuDrawerOpened ? 'active' : ''}`;
+  const calculateStyles = `menu-drawer ${navbarActive ? 'active' : ''}`;
   const calculateLinkStyles = ({ isActive }) => (isActive ? 'link-active' : '');
 
   return (
@@ -48,7 +51,7 @@ const MenuDrawer = ({ menuDrawerOpened, setMenuDrawerOpened }) => {
           </ul>
         </nav>
       </div>
-      {menuDrawerOpened && (
+      {navbarActive && (
         <div onClick={handleDrawerClose} className="navbar-overlay"></div>
       )}
     </>

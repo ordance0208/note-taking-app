@@ -22,10 +22,10 @@
   cursor: pointer;
 }
 
-body[data-theme='dark-theme'] .note.selected {
+body[data-theme='dark-theme'] .note.active {
   background: var(--dark-theme-active-color);
 }
 
-body[data-theme='light-theme'] .note.selected {
+body[data-theme='light-theme'] .note.active {
   background: var(--light-theme-active-color);
 }

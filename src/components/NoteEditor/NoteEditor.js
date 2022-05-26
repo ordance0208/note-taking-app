@@ -5,7 +5,7 @@ import Underline from '@tiptap/extension-underline';
 import TaskList from '@tiptap/extension-task-list';
 import TaskItem from '@tiptap/extension-task-item';
 import Image from '@tiptap/extension-image';
-import { NotesContext } from '../../App';
+import { NotesContext } from '../../contexts/NotesProvider';
 import './NoteEditor.css';
 
 const NoteEditor = ({ setEditor }) => {
@@ -111,7 +111,6 @@ const NoteEditor = ({ setEditor }) => {
       }
     }
 
-    // Query words converted into a string for easier searching
     // wordsToQuery = wordsToQuery.join(' ');
     wordsToQuery = wordsToQuery.filter(word => word.trim().length !== 0);
 
