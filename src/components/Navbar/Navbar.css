@@ -64,6 +64,11 @@ body[data-theme='dark-theme'] .menu-drawer ul li a {
   margin-right: 0.5rem;
 }
 
+.menu-drawer .navigation ul {
+  padding: 0;
+  padding-inline-start: 0;
+}
+
 .navbar-overlay {
   position: fixed;
   top: 0;
