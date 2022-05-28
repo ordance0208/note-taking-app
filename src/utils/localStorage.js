@@ -31,4 +31,4 @@ const loadNotes = (dispatchNotes, setActiveNote) => {
   dispatchNotes({ type: 'LOAD_NOTES', payload: savedNotes })
 };
 
-export { saveNotes, loadNotes, saveTheme, loadTheme, };
+export { saveNotes, loadNotes, saveTheme, loadTheme };
